@@ -473,6 +473,8 @@ MonoBehaviour:
   slideMaxSpeed: 50
   normMaxSpeed: 25
   dashDistance: 130
+  extraForce: 20
+  superJumpForce: 0
 --- !u!1 &1043711138
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,14 +713,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362145936}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 21.6446, y: 12.5069, z: -33.5044}
-  m_LocalScale: {x: 26.729155, y: 2.2211306, z: 61.73029}
+  m_LocalRotation: {x: 0.22747822, y: -0, z: -0, w: 0.9737832}
+  m_LocalPosition: {x: 22.4, y: 15.7849, z: -19.5803}
+  m_LocalScale: {x: 26.729155, y: 2.8987975, z: 79.79257}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.297, y: 0, z: 0}
 --- !u!1 &1486197226
 GameObject:
   m_ObjectHideFlags: 0

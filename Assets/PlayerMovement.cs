@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
     public float slideMaxSpeed;
     public float normMaxSpeed;
     public float dashDistance = 5f; // Adjust the distance of the dash as needed
+    public float extraForce;
+    public float superJumpForce;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +45,13 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics.Raycast(orientation.position, Vector3.down, 2f * 0.5f + 0.2f, whatIsGround);
         Move();
         Debug.Log(rb.velocity.magnitude);
-
+        if(slideTimer < 20f)
+        {
+            superJumpForce = extraForce;
+        } else
+        {
+            superJumpForce = 0f;
+        }
 
 
     }
@@ -67,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
             multiplier = 1f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !isSliding)
         {
             Dash();
         }
@@ -93,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         }
         TimerControl();
         CounterMovement();
-        if (canJump && Input.GetButtonDown("Jump"))
+        if (canJump && Input.GetButtonDown("Jump") && !isSliding)
         {
             Jump();
             Debug.Log("Jump");
@@ -118,7 +128,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         jumpTimer = 0f;
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        
+        rb.AddForce(transform.up * (jumpForce + superJumpForce), ForceMode.Impulse);
     }
 
     void Slide()
@@ -133,7 +144,10 @@ public class PlayerMovement : MonoBehaviour
     void TimerControl()
     {
         jumpTimer += 1f;
-        slideTimer += 1f;
+        if(!isSliding)
+        {
+            slideTimer += 1f;
+        }
         if (jumpTimer > jumpCooldown && grounded)
         {
             canJump = true;
