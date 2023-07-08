@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5092973275581884352}
   - component: {fileID: 5446197252758026344}
   - component: {fileID: 8816999678719511890}
-  - component: {fileID: -5129587280527792735}
+  - component: {fileID: 5738609238796612616}
+  - component: {fileID: 7248554922995770896}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -98,7 +99,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-5129587280527792735
+--- !u!114 &5738609238796612616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019799244140303444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b386801a48499494fb37af9b38f11bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5
+  power: 900
+  radius: 70
+  hitLayer: 3
+  explosionLayer: 6
+  rocket: {fileID: 7019799244140303444}
+--- !u!54 &7248554922995770896
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

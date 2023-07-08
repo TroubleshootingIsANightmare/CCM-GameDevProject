@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
         {
             superJumpForce = 0f;
         }
-        Debug.Log(moveForce);
 
     }
 
@@ -109,9 +108,8 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
         //Respawn
-        if(Input.GetKeyDown(KeyCode.Home))
+        if(Input.GetKeyDown(KeyCode.M))
         {
-            Debug.Log("Respawn");
             Respawn();
         }
 
