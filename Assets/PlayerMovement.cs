@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashDistance = 5f; // Adjust the distance of the dash as needed
     public float extraForce;
     public float superJumpForce;
+    public Vector3 spawnPos = new Vector3(0f,5f,0f);
     
 
     // Start is called before the first frame update
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = Physics.Raycast(orientation.position, Vector3.down, 2f * 0.5f + 0.2f, whatIsGround);
         Move();
-        Debug.Log(rb.velocity.magnitude);
+
         if(slideTimer < 20f)
         {
             superJumpForce = extraForce;
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         {
             superJumpForce = 0f;
         }
-
+        Debug.Log(moveForce);
 
     }
 
@@ -87,9 +88,9 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = airDrag;
             multiplier = 0.5f;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canSlide)
         {
-            Debug.Log("Slide");
+
             Slide();
             slideTimer = 0f;
             maxSpeed = slideMaxSpeed;
@@ -106,9 +107,21 @@ public class PlayerMovement : MonoBehaviour
         if (canJump && Input.GetButtonDown("Jump") && !isSliding)
         {
             Jump();
-            Debug.Log("Jump");
+        }
+        //Respawn
+        if(Input.GetKeyDown(KeyCode.Home))
+        {
+            Debug.Log("Respawn");
+            Respawn();
         }
 
+    }
+
+
+    void Respawn()
+    {
+        player.position = spawnPos;
+        rb.velocity = new Vector3(0f,0f,0f);
     }
 
     void CounterMovement()
