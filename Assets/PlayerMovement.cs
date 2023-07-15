@@ -4,188 +4,107 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player")]
     public Rigidbody rb;
     public Transform orientation;
-    public LayerMask whatIsGround;
-    public bool grounded;
-    public float speed;
-    public float maxSpeed;
-    public float groundDrag;
-    public float jumpForce;
-    public float slideSpeed;
-    public float x, y;
-    public float slideDrag;
-    public float airDrag;
-    public float counterForce;
-    public bool isSliding, canJump, canSlide;
-    public float jumpTimer, jumpCooldown;
-    public float slideTimer, slideCooldown;
-    Vector3 slideScale = new Vector3(1f, 0.5f, 1f);
-    public Transform player;
-    public float multiplier = 1f;
-    [SerializeField] Vector3 moveDirection;
-    public float fallingSpeedMultiplier;
-    [SerializeField] Vector3 moveForce;
-    public float slideMaxSpeed;
-    public float normMaxSpeed;
-    public float dashDistance = 5f; // Adjust the distance of the dash as needed
-    public float extraForce;
-    public float superJumpForce;
-    public Vector3 spawnPos = new Vector3(0f,5f,0f);
-    
 
-    // Start is called before the first frame update
+    [Header("Keys")]
+    public KeyCode jumpKey = KeyCode.Space;
+
+    [Header("Grounded")]
+    public LayerMask ground;
+    public float playerHeight;
+    public bool grounded;
+    public float groundDrag;
+
+    [Header("Air")]
+    float airSpeedMultiplier;
+
+    [Header("Movement")]
+    public bool readyToJump;
+    public float jumpForce;
+    public float maxSpeed;
+    public float speed;
+    public float jumpCooldown;
+    public float horizontalInput, verticalInput;
+    Vector3 moveDirection;
+
     void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+        readyToJump = true;
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        grounded = Physics.Raycast(orientation.position, Vector3.down, 2f * 0.5f + 0.2f, whatIsGround);
-        Move();
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
-        if(slideTimer < 20f)
+
+
+        MyInput();
+        SpeedControl();
+        if (grounded)
         {
-            superJumpForce = extraForce;
+            rb.drag = groundDrag;
         } else
-        {
-            superJumpForce = 0f;
-        }
-
-    }
-
-    void Move()
-    {
-
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
-        moveDirection = orientation.forward * y + orientation.right * x;
-        moveForce = moveDirection.normalized * speed * 10f * multiplier;
-        if (!isSliding) {
-            rb.AddForce(moveForce, ForceMode.Force);
-
-        } else if (isSliding)
         {
             rb.drag = 0;
         }
 
-        if (grounded && !isSliding)
-        {
-            rb.drag = groundDrag;
-            multiplier = 1f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q) && !isSliding)
-        {
-            Dash();
-        }
-
-        if (!grounded)
-        {
-            rb.drag = airDrag;
-            multiplier = 0.5f;
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canSlide)
-        {
-
-            Slide();
-            slideTimer = 0f;
-            maxSpeed = slideMaxSpeed;
-        }
-        else if (!Input.GetKey(KeyCode.LeftShift))
-        {
-
-            isSliding = false;
-            player.localScale = new Vector3(1f, 1f, 1f);
-            maxSpeed = normMaxSpeed;
-        }
-        TimerControl();
-        CounterMovement();
-        if (canJump && Input.GetButtonDown("Jump") && !isSliding)
-        {
-            Jump();
-        }
-        //Respawn
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            Respawn();
-        }
-
     }
-
-
-    void Respawn()
+    void FixedUpdate()
     {
-        player.position = spawnPos;
-        rb.velocity = new Vector3(0f,0f,0f);
-    }
-
-    void CounterMovement()
-    {
-        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D) && !isSliding && grounded)
-        {
-            // Slow down the player's velocity
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, counterForce * Time.deltaTime);
-        }
-        if (rb.velocity.magnitude > maxSpeed)
-        {
-            rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, 0, 0), counterForce / 3f * Time.deltaTime);
-        }
+        Move();
     }
 
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        jumpTimer = 0f;
-        
-        rb.AddForce(transform.up * (jumpForce + superJumpForce), ForceMode.Impulse);
+
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
-    void Slide()
+    void ResetJump()
     {
-        player.localScale = slideScale;
-        isSliding = true;
-        rb.drag = slideDrag;
-        rb.AddForce(moveForce * slideSpeed);
+        readyToJump = true;
+    } 
 
-    }
-
-    void TimerControl()
+    void SpeedControl()
     {
-        jumpTimer += 1f;
-        if(!isSliding)
-        {
-            slideTimer += 1f;
-        }
-        if (jumpTimer > jumpCooldown && grounded)
-        {
-            canJump = true;
-        }
-        else
-        {
-            canJump = false;
-        }
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (slideTimer > slideCooldown)
+        if(flatVel.magnitude > speed)
         {
-            canSlide = true;
-        } else
-        {
-            canSlide = false;
+            Vector3 limitedVel = flatVel.normalized * speed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
     }
 
-    void Dash()
+    void MyInput()
     {
-        // Calculate the dash direction based on the player's current movement direction
-        Vector3 dashDirection = moveDirection.normalized;
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
-
-    // Apply the dash force to the Rigidbody
-    rb.AddForce(dashDirection* dashDistance, ForceMode.Impulse);
+        if(Input.GetKeyDown(jumpKey) && readyToJump)
+        {
+            readyToJump= false;
+            Jump();
+            Invoke("ResetJump", jumpCooldown);
+        }
     }
-        
- }
+
+    void Move()
+    {
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+        if(grounded)
+        {
+            rb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Impulse);
+        }
+        if(!grounded)
+        {
+            rb.AddForce(moveDirection.normalized * speed * 10f * airSpeedMultiplier, ForceMode.Impulse);
+        }
+    }
+}
   

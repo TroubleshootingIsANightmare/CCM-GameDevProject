@@ -88,7 +88,6 @@ public class LaunchProiectile : MonoBehaviour
     void FinishReload()
     {
         ammo = maxAmmo;
-        canShoot = true;
         reloading = false;
     }
 }
