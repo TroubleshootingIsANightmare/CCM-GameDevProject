@@ -13,60 +13,92 @@ public class LaunchProiectile : MonoBehaviour
     public bool shooting, canShoot, reloading;
     public float reloadSpeed;
     public float timeBetweenShots;
-    
+
+    public float bulletsFired;
+    public float spread;
 
     // Start is called before the first frame update
     void Start()
     {
+
         canShoot = true;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.Mouse0) && auto)
+        if (Input.GetKey(KeyCode.Mouse0) && auto)
         {
             shooting = true;
-        } else
+        }
+        else
         {
             shooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
-        if(shooting && canShoot)
+        if (shooting && canShoot && ammo > 0)
         {
+            canShoot = false;
+            Invoke("ResetShot", timeBetweenShots);
             Shoot();
+            
+            
+
         }
-        if(Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo && !reloading)
+        if (Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo && !reloading)
         {
             Reload();
         }
-        if(ammo <= 0)
+        if (ammo <= 0)
         {
-            canShoot= false;
+            canShoot = false;
         }
+        if (ammo > 0 && !reloading && !canShoot)
+        {
+            
+            Invoke("ResetShot", timeBetweenShots);
+        }
+
+
+
     }
 
 
     void Shoot()
     {
+
         canShoot = false;
+
+
+
         RaycastHit hit;
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
-            Vector3 targetPoint;
-        if (Physics.Raycast(ray, out hit)) {
+        Vector3 targetPoint;
+        if (Physics.Raycast(ray, out hit))
+        {
             targetPoint = hit.point;
-        } else {
+        }
+        else
+        {
             targetPoint = ray.GetPoint(75);
 
-            
+
         }
         Vector3 direction = targetPoint - shootPoint.position;
 
-        GameObject currentBullet = Instantiate(projectile, shootPoint.position, Quaternion.identity);
 
-        currentBullet.transform.forward = direction.normalized;
+        for (int i = 0; i < bulletsFired; i++)
+        {
+            canShoot = false;
+            GameObject currentBullet = Instantiate(projectile, shootPoint.position, Quaternion.identity);
 
-        currentBullet.GetComponent<Rigidbody>().AddForce(direction.normalized * speed, ForceMode.Impulse);
+            currentBullet.transform.forward = direction.normalized;
+            currentBullet.transform.Rotate(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread));
+
+            currentBullet.GetComponent<Rigidbody>().AddForce(currentBullet.transform.forward * speed, ForceMode.Impulse);
+
+        }
+
 
 
         Invoke("ResetShot", timeBetweenShots);
@@ -81,7 +113,7 @@ public class LaunchProiectile : MonoBehaviour
 
     void Reload()
     {
-        reloading= true;
+        reloading = true;
         Invoke("FinishReload", reloadSpeed);
     }
 

@@ -16,9 +16,11 @@ public class PlayerMovement : MonoBehaviour
     public float playerHeight;
     public bool grounded;
     public float groundDrag;
+    public float maxGroundSpeed;
 
     [Header("Air")]
-    float airSpeedMultiplier;
+    public float airSpeedMultiplier;
+    public float maxAirSpeed;
 
     [Header("Movement")]
     public bool readyToJump;
@@ -37,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, ground);
 
 
 
@@ -46,9 +48,11 @@ public class PlayerMovement : MonoBehaviour
         if (grounded)
         {
             rb.drag = groundDrag;
+            maxSpeed = maxGroundSpeed;
         } else
         {
             rb.drag = 0;
+            maxSpeed = maxAirSpeed;
         }
 
     }
@@ -71,12 +75,13 @@ public class PlayerMovement : MonoBehaviour
 
     void SpeedControl()
     {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        if(flatVel.magnitude > speed)
+        float fallSpeed = rb.velocity.y;
+        
+        
+        if(rb.velocity.magnitude > maxSpeed)
         {
-            Vector3 limitedVel = flatVel.normalized * speed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            Vector3 limitedVel = rb.velocity.normalized * maxSpeed;
+            rb.velocity = new Vector3(limitedVel.x, fallSpeed, limitedVel.z);
         }
     }
 
@@ -99,11 +104,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(grounded)
         {
-            rb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Impulse);
+            rb.AddForce(moveDirection.normalized * speed * Time.deltaTime, ForceMode.Impulse);
         }
         if(!grounded)
         {
-            rb.AddForce(moveDirection.normalized * speed * 10f * airSpeedMultiplier, ForceMode.Impulse);
+            rb.AddForce(moveDirection.normalized * speed * Time.deltaTime * airSpeedMultiplier, ForceMode.Impulse);
         }
     }
 }
