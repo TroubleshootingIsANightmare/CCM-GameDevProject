@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class LaunchProiectile : MonoBehaviour
 {
@@ -13,20 +15,28 @@ public class LaunchProiectile : MonoBehaviour
     public bool shooting, canShoot, reloading;
     public float reloadSpeed;
     public float timeBetweenShots;
-
+    public Image[] bulletImage;
+    public Sprite bulletSprite;
     public float bulletsFired;
+    public GameObject bulletUI;
     public float spread;
+    public Rigidbody player;
+    public float recoil;
+    public float distanceBetweenIcons;
 
     // Start is called before the first frame update
     void Start()
     {
 
         canShoot = true;
+        AmmoIconControl();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        AmmoIconControl();
+
         if (Input.GetKey(KeyCode.Mouse0) && auto)
         {
             shooting = true;
@@ -67,8 +77,8 @@ public class LaunchProiectile : MonoBehaviour
     {
 
         canShoot = false;
-
-
+        
+        AmmoIconControl();
 
         RaycastHit hit;
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -85,7 +95,7 @@ public class LaunchProiectile : MonoBehaviour
 
         }
         Vector3 direction = targetPoint - shootPoint.position;
-
+        player.AddForce(direction.normalized * -1 * recoil);
 
         for (int i = 0; i < bulletsFired; i++)
         {
@@ -114,6 +124,7 @@ public class LaunchProiectile : MonoBehaviour
     void Reload()
     {
         reloading = true;
+        canShoot= false;
         Invoke("FinishReload", reloadSpeed);
     }
 
@@ -121,5 +132,26 @@ public class LaunchProiectile : MonoBehaviour
     {
         ammo = maxAmmo;
         reloading = false;
+    }
+
+    void AmmoIconControl()
+    {
+        
+        for(int i = 0; i < bulletImage.Length; i++)
+        {
+            Debug.Log(i);
+            
+            bulletImage[i].sprite = bulletSprite;
+            bulletImage[i].gameObject.transform.position = new Vector3(bulletImage[0].transform.position.x + distanceBetweenIcons * i, bulletImage[0].transform.position.y, bulletImage[0].transform.position.z);
+            if(i >= ammo)
+            {
+                bulletImage[i].enabled = false;
+            } else
+            {
+                bulletImage[i].enabled = true;  
+            }
+            
+        }
+
     }
 }

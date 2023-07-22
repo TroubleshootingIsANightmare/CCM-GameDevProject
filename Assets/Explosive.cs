@@ -43,6 +43,7 @@ public class Explosive : MonoBehaviour
         
         Vector3 explosionPos = transform.position;
         Collider[] hits = Physics.OverlapSphere(explosionPos, radius);
+        
         foreach (Collider hit in hits)
         {
             Debug.Log("Hit");
@@ -51,7 +52,10 @@ public class Explosive : MonoBehaviour
 
             if (rb != null)
             {
+                Vector3 locate = new Vector3(hit.gameObject.transform.position.x, 0, hit.gameObject.transform.position.z);
+                Vector3 direction = locate - explosionPos;
                 Destroy(rocket);
+                rb.AddForce(direction * power);
                 rb.AddExplosionForce(power, explosionPos, radius, 0);
             }
 
