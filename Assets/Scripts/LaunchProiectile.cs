@@ -23,6 +23,7 @@ public class LaunchProiectile : MonoBehaviour
     public Rigidbody player;
     public float recoil;
     public float distanceBetweenIcons;
+    public bool resetting;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +49,7 @@ public class LaunchProiectile : MonoBehaviour
         if (shooting && canShoot && ammo > 0)
         {
             canShoot = false;
-            Invoke("ResetShot", timeBetweenShots);
+            ResetShot();
             Shoot();
             
             
@@ -58,16 +59,17 @@ public class LaunchProiectile : MonoBehaviour
         {
             Reload();
         }
-        if (ammo <= 0)
+       
+        if (shooting)
+        {
+
+            ResetShot();
+        }
+        if ((reloading || resetting || ammo <= 0))
         {
             canShoot = false;
         }
-        if (ammo > 0 && !reloading && !canShoot)
-        {
-            
-            Invoke("ResetShot", timeBetweenShots);
-        }
-
+        else if (!resetting && ammo > 0 || !reloading && ammo > 0) canShoot = true; 
 
 
     }
@@ -75,6 +77,7 @@ public class LaunchProiectile : MonoBehaviour
 
     void Shoot()
     {
+        ResetShot();
 
         canShoot = false;
         
@@ -111,13 +114,20 @@ public class LaunchProiectile : MonoBehaviour
 
 
 
-        Invoke("ResetShot", timeBetweenShots);
-
+        
         ammo--;
     }
 
     void ResetShot()
     {
+        resetting = true;
+        Invoke("FinishReset", timeBetweenShots);
+        
+    }
+
+    void FinishReset()
+    {
+        resetting = false;
         canShoot = true;
     }
 
@@ -131,6 +141,7 @@ public class LaunchProiectile : MonoBehaviour
     void FinishReload()
     {
         ammo = maxAmmo;
+        
         reloading = false;
     }
 

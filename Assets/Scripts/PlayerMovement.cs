@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalInput, verticalInput;
     Vector3 moveDirection;
 
+
+    [Header("Particles")]
+    public ParticleSystem speedParticles;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,9 +44,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, ground);
+        var emit = speedParticles.emission;
 
+        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") > 0 && grounded)
+        {
+            emit.rateOverTime = rb.velocity.magnitude;
+        }
 
+        if(!grounded)
+        {
 
+        }
         MyInput();
         SpeedControl();
         if (grounded)
