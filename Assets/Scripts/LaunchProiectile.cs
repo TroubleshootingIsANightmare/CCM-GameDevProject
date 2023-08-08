@@ -24,11 +24,13 @@ public class LaunchProiectile : MonoBehaviour
     public float recoil;
     public float distanceBetweenIcons;
     public bool resetting;
+    public Animator animator;
+    public bool firing;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        firing = false;
         canShoot = true;
         AmmoIconControl();
     }
@@ -36,6 +38,7 @@ public class LaunchProiectile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         AmmoIconControl();
 
         if (Input.GetKey(KeyCode.Mouse0) && auto)
@@ -48,38 +51,40 @@ public class LaunchProiectile : MonoBehaviour
         }
         if (shooting && canShoot && ammo > 0)
         {
+            firing= true;
             canShoot = false;
-            ResetShot();
             Shoot();
             
-            
-
         }
         if (Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo && !reloading)
         {
             Reload();
         }
-       
-        if (shooting)
-        {
 
-            ResetShot();
-        }
         if ((reloading || resetting || ammo <= 0))
         {
             canShoot = false;
         }
         else if (!resetting && ammo > 0 || !reloading && ammo > 0) canShoot = true; 
-
+        if(firing)
+        {
+            animator.SetBool("Fire", true);
+            animator.SetBool("Idle", false);
+        } else
+        {
+            animator.SetBool("Idle", true) ;
+            animator.SetBool("Fire", false) ;
+        }
 
     }
 
 
     void Shoot()
     {
+        animator.SetBool("Fire", true);
+        
         ResetShot();
-
-        canShoot = false;
+        
         
         AmmoIconControl();
 
@@ -99,6 +104,7 @@ public class LaunchProiectile : MonoBehaviour
         }
         Vector3 direction = targetPoint - shootPoint.position;
         player.AddForce(direction.normalized * -1 * recoil);
+
 
         for (int i = 0; i < bulletsFired; i++)
         {
@@ -121,14 +127,16 @@ public class LaunchProiectile : MonoBehaviour
     void ResetShot()
     {
         resetting = true;
+        canShoot= false;
         Invoke("FinishReset", timeBetweenShots);
         
     }
 
     void FinishReset()
     {
+        
         resetting = false;
-        canShoot = true;
+        firing = false;
     }
 
     void Reload()
@@ -136,12 +144,13 @@ public class LaunchProiectile : MonoBehaviour
         reloading = true;
         canShoot= false;
         Invoke("FinishReload", reloadSpeed);
+        animator.SetBool("Reloading", true);
     }
 
     void FinishReload()
     {
         ammo = maxAmmo;
-        
+        animator.SetBool("Reloading", false);
         reloading = false;
     }
 
@@ -150,7 +159,7 @@ public class LaunchProiectile : MonoBehaviour
         
         for(int i = 0; i < bulletImage.Length; i++)
         {
-            Debug.Log(i);
+           
             
             bulletImage[i].sprite = bulletSprite;
             bulletImage[i].gameObject.transform.position = new Vector3(bulletImage[0].transform.position.x + distanceBetweenIcons * i, bulletImage[0].transform.position.y, bulletImage[0].transform.position.z);

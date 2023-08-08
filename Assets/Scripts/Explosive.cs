@@ -11,6 +11,7 @@ public class Explosive : MonoBehaviour
     public int explodeLayer;
     public GameObject rocket;
     public GameObject explosiveFX;
+    public float knockbackForce;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +56,7 @@ public class Explosive : MonoBehaviour
                 Vector3 locate = new Vector3(hit.gameObject.transform.position.x, 0, hit.gameObject.transform.position.z);
                 Vector3 direction = locate - explosionPos;
                 Destroy(rocket);
-                rb.AddForce(direction * power);
+                rb.AddForce(direction * knockbackForce);
                 rb.AddExplosionForce(power, explosionPos, radius, 0);
             }
 

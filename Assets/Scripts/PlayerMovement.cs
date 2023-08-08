@@ -7,9 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player")]
     public Rigidbody rb;
     public Transform orientation;
+    public Camera pcamera;
+    public float fov;
 
     [Header("Keys")]
     public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode punchKey = KeyCode.F;
 
     [Header("Grounded")]
     public LayerMask ground;
@@ -23,9 +26,12 @@ public class PlayerMovement : MonoBehaviour
     public float maxAirSpeed;
 
     [Header("Movement")]
-    public bool readyToJump;
+    public bool readyToJump, canPunch, punchable;
     public float jumpForce;
     public float maxSpeed;
+    public float punchDamage, punchCooldown, punchRange;
+    public LayerMask punchLayer;
+    public Animator animator;
     public float speed;
     public float jumpCooldown;
     public float horizontalInput, verticalInput;
@@ -43,18 +49,30 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        
+
+
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, ground);
         var emit = speedParticles.emission;
+        Vector3 velocityForward = rb.velocity;
+        velocityForward.y = 0f;
+        velocityForward.Normalize();
 
-        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") > 0 && grounded)
+        float angle = Vector3.Angle(orientation.forward, velocityForward);
+
+        float threshold = 30f;
+
+        if (angle <= threshold && Input.GetAxisRaw("Vertical") > 0 && grounded || !grounded && angle <= threshold)
         {
+            pcamera.fieldOfView = fov + rb.velocity.magnitude / 3;
             emit.rateOverTime = rb.velocity.magnitude;
-        }
-
-        if(!grounded)
+        } else
         {
-
+            pcamera.fieldOfView = Mathf.Lerp(pcamera.fieldOfView, fov, 0.1f);
+            emit.rateOverTime = 0;
         }
+
+
         MyInput();
         SpeedControl();
         if (grounded)
@@ -101,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+        bool punching = Input.GetKeyDown(punchKey);
 
         if(Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
@@ -108,6 +127,26 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             Invoke("ResetJump", jumpCooldown);
         }
+        if(punching && canPunch)
+        {
+            Punch();
+        }
+    }
+
+    void Punch()
+    {
+
+        canPunch = false;
+
+        Invoke("ResetPunch", punchCooldown);
+    }
+
+    void ResetPunch()
+    {
+   
+
+        animator.SetBool("Punching", false);
+        canPunch = true;
     }
 
     void Move()

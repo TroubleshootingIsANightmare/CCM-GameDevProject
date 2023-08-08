@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8196803920520056354}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,9 +128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
-  power: 20000
+  power: 10000
   radius: 10
   hitLayer: 3
   explodeLayer: 6
   rocket: {fileID: 7019799244140303444}
   explosiveFX: {fileID: 6187240968172533386, guid: 5883cdebc1d977d4b8b605ffcf7ce0ff, type: 3}
+  knockbackForce: 10000
