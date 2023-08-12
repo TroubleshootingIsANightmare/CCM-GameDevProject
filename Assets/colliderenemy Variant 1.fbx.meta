@@ -13,11 +13,18 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
+<<<<<<< HEAD
     optimizeGameObjects: 1
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
       human bone 'LeftHand' not found\n"
+=======
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+>>>>>>> parent of 8e1fc00 (ee)
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -25,7 +32,11 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
+<<<<<<< HEAD
     animationCompression: 3
+=======
+    animationCompression: 1
+>>>>>>> parent of 8e1fc00 (ee)
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -55,7 +66,11 @@ ModelImporter:
     weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
+<<<<<<< HEAD
     skinWeightsMode: 1
+=======
+    skinWeightsMode: 0
+>>>>>>> parent of 8e1fc00 (ee)
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
@@ -82,6 +97,7 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
+<<<<<<< HEAD
     human:
     - boneName: Armature
       humanName: Hips
@@ -493,6 +509,10 @@ ModelImporter:
       position: {x: -0, y: -0.33885527, z: 0}
       rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
       scale: {x: 100, y: 100, z: 93.44308}
+=======
+    human: []
+    skeleton: []
+>>>>>>> parent of 8e1fc00 (ee)
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -501,15 +521,26 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
+<<<<<<< HEAD
     rootMotionBoneName: Body
+=======
+    rootMotionBoneName: 
+>>>>>>> parent of 8e1fc00 (ee)
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+<<<<<<< HEAD
   autoGenerateAvatarMappingIfUnspecified: 0
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
+=======
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+>>>>>>> parent of 8e1fc00 (ee)
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
