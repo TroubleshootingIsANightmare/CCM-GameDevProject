@@ -13,10 +13,18 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
+<<<<<<< HEAD
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
+=======
+    optimizeGameObjects: 1
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftHand' not found\n"
+>>>>>>> 7b3139e880ad35eaecc2f3666ad61ebb1e066860
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -24,7 +32,11 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
+<<<<<<< HEAD
     animationCompression: 1
+=======
+    animationCompression: 3
+>>>>>>> 7b3139e880ad35eaecc2f3666ad61ebb1e066860
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -54,7 +66,11 @@ ModelImporter:
     weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
+<<<<<<< HEAD
     skinWeightsMode: 0
+=======
+    skinWeightsMode: 1
+>>>>>>> 7b3139e880ad35eaecc2f3666ad61ebb1e066860
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
@@ -81,8 +97,422 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
+<<<<<<< HEAD
     human: []
     skeleton: []
+=======
+    human:
+    - boneName: Armature
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftT
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightT
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftS
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightS
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftF
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightF
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bottom
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Mid_1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Neck_1
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head_1
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest_001
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest_002
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest_004
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest_003
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest_005
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest_006
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: colliderenemy Variant 1(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0.06999993, y: 3.3859844, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 73.73456}
+    - name: Bottom
+      parentName: Armature
+      position: {x: 3.8051024e-25, y: 0.0000000017136658, z: 0.0045161545}
+      rotation: {x: 0.69791895, y: -0.013965684, z: -0.008175601, w: 0.71599394}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Mid_1
+      parentName: Bottom
+      position: {x: -5.820766e-13, y: 0.01, z: 1.0768417e-11}
+      rotation: {x: 0.037006427, y: -0.0036406496, z: -0.0045613344, w: 0.99929804}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Chest
+      parentName: Mid_1
+      position: {x: -1.01863405e-11, y: 0.007846593, z: 3.2014214e-11}
+      rotation: {x: 9.249471e-10, y: -9.2131813e-10, z: 1.2005333e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Chest_001
+      parentName: Chest
+      position: {x: -0, y: 0.016847095, z: 3.7834974e-12}
+      rotation: {x: 0.000000008183575, y: -0.000000010339276, z: 0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Chest_004
+      parentName: Chest_001
+      position: {x: 0.0000000041618478, y: 0.01126294, z: 7.4505804e-11}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+    - name: Chest_005
+      parentName: Chest_004
+      position: {x: -0.0000000014062971, y: 0.022013923, z: -1.6763806e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Chest_005_end
+      parentName: Chest_005
+      position: {x: -0, y: 0.017790327, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chest_002
+      parentName: Chest
+      position: {x: -0, y: 0.016847095, z: 3.7834974e-12}
+      rotation: {x: -0.000000031807577, y: -0.000000034052665, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Chest_003
+      parentName: Chest_002
+      position: {x: -0.0000000018847641, y: 0.010750989, z: 3.7252902e-11}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1}
+    - name: Chest_006
+      parentName: Chest_003
+      position: {x: 0.0000000011920929, y: 0.022013927, z: -0.0000000014901159}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Chest_006_end
+      parentName: Chest_006
+      position: {x: -0, y: 0.017662339, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck_1
+      parentName: Chest
+      position: {x: -0, y: 0.016847095, z: 3.7834974e-12}
+      rotation: {x: 0.0000000032214948, y: -0.0000000023765099, z: -6.1845654e-11, w: 1}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Head_1
+      parentName: Neck_1
+      position: {x: -1.6298145e-11, y: 0.007002878, z: 2.9976945e-11}
+      rotation: {x: -0.03790632, y: 0.000043499225, z: 0.0014722107, w: 0.9992802}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Head_end
+      parentName: Head_1
+      position: {x: -0, y: 0.020078044, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pivot
+      parentName: Armature
+      position: {x: 0.0067, y: -0, z: 0.008}
+      rotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightT
+      parentName: Pivot
+      position: {x: 0.0000000025092384, y: 0.0060686246, z: 2.9802336e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: RightS
+      parentName: RightT
+      position: {x: -1.3897079e-11, y: 0.022250323, z: 6.289337e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: RightF
+      parentName: RightS
+      position: {x: 0.0000000014752731, y: 0.020453857, z: 4.0279702e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightF_end
+      parentName: RightF
+      position: {x: -0, y: 0.006504447, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PivotL
+      parentName: Armature
+      position: {x: -0.0053, y: -0, z: 0.0085}
+      rotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftT
+      parentName: PivotL
+      position: {x: 0.0000000011511904, y: 0.006579217, z: 0.0000000015646218}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 0.9999998, z: 0.9999999}
+    - name: LeftS
+      parentName: LeftT
+      position: {x: -8.7443226e-11, y: 0.021580273, z: 4.801191e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1}
+    - name: LeftF
+      parentName: LeftS
+      position: {x: -4.8894434e-11, y: 0.020401107, z: -1.9557773e-10}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 0.9999998}
+    - name: LeftF_end
+      parentName: LeftF
+      position: {x: -0, y: 0.006504447, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: Bot
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: Camera
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: 0.07068458, y: 7.7515154, z: 10.452603}
+      rotation: {x: -0.000000022351744, y: -0.973497, z: 0.22869991, w: 0}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Head
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: LBi
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: LElb
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: LFoot
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: LFor
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: Light
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -4.0762453, y: 5.903862, z: -1.005454}
+      rotation: {x: 0.52327543, y: -0.34203395, z: 0.7269424, w: 0.28416616}
+      scale: {x: 100.00001, y: 100, z: 100}
+    - name: LKnee
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: LPiv
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: LShin
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: LSho
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: LThi
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: Mid
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: Neck
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: RBi
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: RElb
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: RFoot
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: RFor
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: Rig_1
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -13.259999, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RKnee
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: RPiv
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: RShin
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: RSho
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: RThi
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+    - name: Top
+      parentName: colliderenemy Variant 1(Clone)
+      position: {x: -0, y: -0.33885527, z: 0}
+      rotation: {x: -0.70698476, y: 0, z: -0, w: 0.7072288}
+      scale: {x: 100, y: 100, z: 93.44308}
+>>>>>>> 7b3139e880ad35eaecc2f3666ad61ebb1e066860
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -91,15 +521,26 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
+<<<<<<< HEAD
     rootMotionBoneName: 
+=======
+    rootMotionBoneName: Body
+>>>>>>> 7b3139e880ad35eaecc2f3666ad61ebb1e066860
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+<<<<<<< HEAD
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+=======
+  autoGenerateAvatarMappingIfUnspecified: 0
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+>>>>>>> 7b3139e880ad35eaecc2f3666ad61ebb1e066860
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
