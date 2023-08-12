@@ -391,7 +391,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8e1fc00 (ee)
   m_GameObject: {fileID: 561648094}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -401,6 +404,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1004456965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+>>>>>>> parent of 8e1fc00 (ee)
+=======
 >>>>>>> parent of 8e1fc00 (ee)
 --- !u!1 &692495349
 GameObject:
@@ -669,7 +675,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8e1fc00 (ee)
   m_GameObject: {fileID: 727588121}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -679,6 +688,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1004456965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+>>>>>>> parent of 8e1fc00 (ee)
+=======
 >>>>>>> parent of 8e1fc00 (ee)
 --- !u!1 &826190310
 GameObject:
@@ -936,8 +948,11 @@ MonoBehaviour:
   orientation: {fileID: 561648095}
   cam: {fileID: 963194227}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!54 &1004456967 stripped
 =======
+=======
+>>>>>>> parent of 8e1fc00 (ee)
 --- !u!1 &1004456964
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +995,9 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1004456967
+<<<<<<< HEAD
+>>>>>>> parent of 8e1fc00 (ee)
+=======
 >>>>>>> parent of 8e1fc00 (ee)
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -987,7 +1005,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8e1fc00 (ee)
   m_GameObject: {fileID: 1004456964}
   serializedVersion: 4
   m_Mass: 10
@@ -1147,6 +1168,9 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< HEAD
+>>>>>>> parent of 8e1fc00 (ee)
+=======
 >>>>>>> parent of 8e1fc00 (ee)
 --- !u!1 &1043711138
 GameObject:
@@ -2116,7 +2140,10 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 26.297, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8e1fc00 (ee)
 --- !u!1 &1486197226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,6 +2175,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1004456965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+>>>>>>> parent of 8e1fc00 (ee)
+=======
 >>>>>>> parent of 8e1fc00 (ee)
 --- !u!1 &1487227195
 GameObject:
@@ -3058,7 +3088,10 @@ CanvasRenderer:
 GameObject:
   m_ObjectHideFlags: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 8e1fc00 (ee)
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4162,7 +4195,11 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1247534660}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 4723512757953280198}
+=======
+  - {fileID: 1004456965}
+>>>>>>> parent of 8e1fc00 (ee)
 =======
   - {fileID: 1004456965}
 >>>>>>> parent of 8e1fc00 (ee)
@@ -4175,6 +4212,10 @@ SceneRoots:
   - {fileID: 1637943386}
   - {fileID: 436731812}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  - {fileID: 7301859240078829883}
+>>>>>>> parent of 8e1fc00 (ee)
 =======
   - {fileID: 7301859240078829883}
 >>>>>>> parent of 8e1fc00 (ee)
