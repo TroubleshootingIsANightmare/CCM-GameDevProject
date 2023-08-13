@@ -147,10 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
-  power: 2000
+  power: 1000
   radius: 10
   hitLayer: 3
   explodeLayer: 6
   rocket: {fileID: 7019799244140303444}
   explosiveFX: {fileID: 6187240968172533386, guid: 5883cdebc1d977d4b8b605ffcf7ce0ff, type: 3}
-  knockbackForce: 2000
+  knockbackForce: 1000
