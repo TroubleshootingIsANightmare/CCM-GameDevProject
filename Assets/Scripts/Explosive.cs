@@ -35,7 +35,9 @@ public class Explosive : MonoBehaviour
         if(other.gameObject.layer == hitLayer)
         {
             Explode();
-
+        } else if(other.gameObject.tag == "Player")
+        {
+            return;
         }
     }
 
@@ -53,10 +55,10 @@ public class Explosive : MonoBehaviour
 
             if (rb != null)
             {
-                Vector3 locate = new Vector3(hit.gameObject.transform.position.x, 0, hit.gameObject.transform.position.z);
+                Vector3 locate = new Vector3(hit.gameObject.transform.position.x, 0f, hit.gameObject.transform.position.z);
                 Vector3 direction = locate - explosionPos;
                 Destroy(rocket);
-                rb.AddForce(direction * knockbackForce);
+                rb.AddForce(direction.x * knockbackForce, 0, direction.z * knockbackForce);
                 rb.AddExplosionForce(power, explosionPos, radius, 0);
             }
 

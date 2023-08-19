@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public Transform orientation;
     public Camera pcamera;
     public float fov;
+    public Animator animator;
+
+    [Header("Inputs")]
+    public float horizontalInput, verticalInput;
+
 
     [Header("Keys")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -19,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     public float counterThreshold;
     public float playerHeight;
     public bool grounded;
-    public float groundDrag;
     public float maxGroundSpeed;
 
     [Header("Air")]
@@ -27,18 +32,23 @@ public class PlayerMovement : MonoBehaviour
     public float maxAirSpeed;
 
     [Header("Movement")]
-    public bool readyToJump, canPunch, punchable;
-    public float jumpForce;
+
     public float counterMovement;
     public float maxSpeed;
-    public float punchDamage, punchCooldown, punchRange;
-    public LayerMask punchLayer;
-    public Animator animator;
+    public bool running;
+    public float runSpeed;
+    public bool moving;
+    public bool launched;
+    public Vector2 maxRunVel;
     public float speed;
-    public float jumpCooldown;
-    public float horizontalInput, verticalInput;
+
+
     Vector3 moveDirection;
 
+    [Header("Jump")]
+    public bool readyToJump;
+    public float jumpForce;
+    public float jumpCooldown;
 
     [Header("Particles")]
     public ParticleSystem speedParticles;
@@ -51,8 +61,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        maxRunVel = new Vector2(rb.velocity.x, rb.velocity.z);
         Debug.Log(rb.velocity.magnitude);
-
+        Debug.Log(maxRunVel);
 
         rb.AddForce(0f, -10f * Time.deltaTime, 0f, ForceMode.Force);
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, ground);
@@ -105,7 +116,11 @@ public class PlayerMovement : MonoBehaviour
         if(rb.velocity.magnitude > maxSpeed)
         {
             Vector3 limitedVel = rb.velocity.normalized * maxSpeed;
-            rb.velocity = new Vector3(limitedVel.x, fallSpeed, limitedVel.z);
+            rb.AddForce(-moveDirection * counterMovement * 1.5f);
+        }
+        if (grounded && moving && !running)
+        {
+            rb.AddForce(-moveDirection.normalized * counterMovement * 2f, ForceMode.Force);
         }
     }
 
@@ -113,13 +128,32 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        bool punching = Input.GetKeyDown(punchKey);
 
         if(Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
             readyToJump= false;
             Jump();
             Invoke("ResetJump", jumpCooldown);
+        }
+        if(horizontalInput > 0 || horizontalInput < 0 || verticalInput > 0 || verticalInput < 0 )
+        {
+            moving = true;
+         
+            if (maxRunVel.magnitude < runSpeed + 10)
+            {
+                running = true;
+                launched = false;
+            } else
+            {
+                launched = true;
+                running = false;
+            }
+        } else
+        {
+            moving = false;
+            running = false;
+            launched = false;
+            
         }
    
     }
@@ -132,16 +166,24 @@ public class PlayerMovement : MonoBehaviour
         CounterMovement(horizontalInput, verticalInput, mag);
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if(grounded)
+        if(grounded && !running && launched)
         {
             maxSpeed = maxGroundSpeed;
             rb.AddForce(moveDirection.normalized * speed * Time.deltaTime, ForceMode.Impulse);
-
         }
-        if(!grounded)
+
+
+
+        if(!grounded && !running && launched)
         {
             maxSpeed = maxAirSpeed;
             rb.AddForce(moveDirection.normalized * speed * Time.deltaTime * airSpeedMultiplier, ForceMode.Impulse);
+        }
+
+        if(running)
+        {
+            rb.AddForce(moveDirection.normalized * speed * Time.deltaTime, ForceMode.Impulse);
+            maxSpeed = runSpeed;
         }
     }
 
@@ -163,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!grounded) return;
+        if (!grounded || moving) return;
 
        
         //Counter movement

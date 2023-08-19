@@ -241,6 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 313905205}
+  - component: {fileID: 313905206}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -263,6 +264,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &313905206
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313905204}
+  m_Enabled: 1
 --- !u!1 &436731808
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,6 +784,11 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 2961802486378804416, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
   m_PrefabInstance: {fileID: 4723512757953280198}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1114040588 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1252710824312049081, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+  m_PrefabInstance: {fileID: 4723512757953280198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1203440657
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,10 +843,10 @@ MonoBehaviour:
   ammo: 4
   maxAmmo: 4
   shooting: 0
-  canShoot: 0
+  canShoot: 1
   reloading: 0
   reloadSpeed: 1
-  timeBetweenShots: 0.25
+  timeBetweenShots: 0.6
   bulletImage:
   - {fileID: 246808333}
   - {fileID: 1341161185}
@@ -840,11 +854,11 @@ MonoBehaviour:
   - {fileID: 1576356876}
   bulletSprite: {fileID: 21300000, guid: 405e60afc6909ef4db4e191942fc951c, type: 3}
   bulletsFired: 4
-  bulletUI: {fileID: 0}
+  bulletUI: {fileID: 1254717755}
   spread: 20
-  player: {fileID: 0}
-  recoil: 200
-  distanceBetweenIcons: 0
+  player: {fileID: 1114040587}
+  recoil: 780
+  distanceBetweenIcons: 50
   resetting: 0
   animator: {fileID: 1328875101}
   firing: 0
@@ -1278,7 +1292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 7019799244140303444, guid: dc92c4cfed6278f4bb041a261d901b71, type: 3}
-  speed: 20
+  speed: 35
   playerCam: {fileID: 963194227}
   shootPoint: {fileID: 826190311}
   auto: 0
@@ -1300,7 +1314,7 @@ MonoBehaviour:
   spread: 0
   player: {fileID: 1114040587}
   recoil: 0
-  distanceBetweenIcons: 40
+  distanceBetweenIcons: 50
   resetting: 0
   animator: {fileID: 1328875101}
   firing: 0
@@ -2099,13 +2113,14 @@ GameObject:
   - component: {fileID: 2035042431}
   - component: {fileID: 2035042430}
   - component: {fileID: 2035042429}
+  - component: {fileID: 2035042435}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2035042429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2131,9 +2146,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 100
-  m_Acceleration: 8
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 360
+  m_AngularSpeed: 923.7
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -2228,6 +2243,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2035042435
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035042428}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &4723512757953280198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2276,6 +2318,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1544144874943518882, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2961802486378804416, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -2285,9 +2331,25 @@ PrefabInstance:
       value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1114040588}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: pcamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: running
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: canSlide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: runSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: jumpForce
       value: 15
@@ -2297,8 +2359,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: slideForce
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: maxAirSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: jumpCooldown
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: maxSlideTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: slideCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: maxGroundSpeed
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: speedParticles
@@ -2306,14 +2388,30 @@ PrefabInstance:
       objectReference: {fileID: 843599480}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: counterMovement
-      value: 5
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: slideMultiplier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: counterThreshold
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8564387571307282568, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564387571307282568, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872734009702434477, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8877492591685655862, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
