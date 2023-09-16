@@ -53,11 +53,12 @@ public class Explosive : MonoBehaviour
 
             if (rb != null)
             {
-                Vector3 locate = new Vector3(hit.gameObject.transform.position.x, 0, hit.gameObject.transform.position.z);
-                Vector3 direction = locate - explosionPos;
+                Vector2 locate = new Vector2(hit.gameObject.transform.position.x, hit.gameObject.transform.position.z);
+                Vector2 direction = new Vector2(locate.x - explosionPos.x, locate.y - explosionPos.z);
+                direction.Normalize();
                 Destroy(rocket);
-                rb.AddForce(direction * knockbackForce);
-                rb.AddExplosionForce(power, explosionPos, radius, 0);
+                rb.AddForce(new Vector3(direction.x * knockbackForce, 0, direction.y * knockbackForce));
+                rb.AddExplosionForce(power, explosionPos, radius, 1);
             }
 
             Instantiate(explosiveFX, rocket.transform.position, rocket.transform.rotation);
