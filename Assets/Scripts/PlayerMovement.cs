@@ -27,27 +27,12 @@ public class PlayerMovement : MonoBehaviour
     public float maxAirSpeed;
 
     [Header("Movement")]
-    public bool readyToJump, canPunch, punchable;
+    public bool readyToJump;
     public float jumpForce;
     public float counterMovement;
     public float maxSpeed;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    public bool running;
-    public float runSpeed;
-    public bool moving;
-    public bool launched;
-    public Vector2 maxRunVel;
-=======
     public float multiplier = 1f;
-    public LayerMask punchLayer;
     public Animator animator;
->>>>>>> Stashed changes
-=======
-    public float punchDamage, punchCooldown, punchRange;
-    public LayerMask punchLayer;
-    public Animator animator;
->>>>>>> parent of 8675f09 (Changed Movement)
     public float speed;
     public float jumpCooldown;
     public float horizontalInput, verticalInput;
@@ -66,20 +51,11 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        maxRunVel = new Vector2(rb.velocity.x, rb.velocity.z);
-=======
->>>>>>> parent of 8675f09 (Changed Movement)
-        Debug.Log(rb.velocity.magnitude);
 
-
-=======
         //Print the velocity
         Debug.Log(rb.velocity.magnitude);
 
         //Extra Gravity
->>>>>>> Stashed changes
         rb.AddForce(0f, -10f * Time.deltaTime, 0f, ForceMode.Force);
 
         //Detect the ground using ray
@@ -134,34 +110,14 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     } 
 
-<<<<<<< Updated upstream
-    void SpeedControl()
-    {
-        float fallSpeed = rb.velocity.y;
-        
-        
-        if(rb.velocity.magnitude > maxSpeed)
-        {
-            Vector3 limitedVel = rb.velocity.normalized * maxSpeed;
-            rb.velocity = new Vector3(limitedVel.x, fallSpeed, limitedVel.z);
-        }
-    }
 
-=======
-    
->>>>>>> Stashed changes
+
+
     void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-        
->>>>>>> Stashed changes
-=======
-        bool punching = Input.GetKeyDown(punchKey);
->>>>>>> parent of 8675f09 (Changed Movement)
+
 
         if(Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
@@ -180,13 +136,7 @@ public class PlayerMovement : MonoBehaviour
         CounterMovement(horizontalInput, verticalInput, mag);
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        if(grounded && !running && launched)
-        {
-            maxSpeed = maxGroundSpeed;
-            rb.AddForce(moveDirection.normalized * speed * Time.deltaTime, ForceMode.Impulse);
-=======
+ 
         if (horizontalInput > 0 && xMag > maxSpeed) horizontalInput = 0;
         if (horizontalInput < 0 && xMag < -maxSpeed) horizontalInput = 0;
         if (verticalInput > 0 && yMag > maxSpeed) verticalInput = 0;
@@ -196,15 +146,6 @@ public class PlayerMovement : MonoBehaviour
         {
             maxSpeed = maxGroundSpeed;
             rb.AddForce(moveDirection.normalized * speed * multiplier * Time.deltaTime);
-
->>>>>>> Stashed changes
-=======
-        if(grounded)
-        {
-            maxSpeed = maxGroundSpeed;
-            rb.AddForce(moveDirection.normalized * speed * Time.deltaTime, ForceMode.Impulse);
-
->>>>>>> parent of 8675f09 (Changed Movement)
         }
         if(!grounded)
         {
