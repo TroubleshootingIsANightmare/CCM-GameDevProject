@@ -1571,6 +1571,7 @@ GameObject:
   - component: {fileID: 1487227199}
   - component: {fileID: 1487227198}
   - component: {fileID: 1487227197}
+  - component: {fileID: 1487227200}
   m_Layer: 0
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -1661,6 +1662,14 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!81 &1487227200
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487227195}
+  m_Enabled: 1
 --- !u!1 &1560012775
 GameObject:
   m_ObjectHideFlags: 0
