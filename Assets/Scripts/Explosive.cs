@@ -55,11 +55,20 @@ public class Explosive : MonoBehaviour
 
             if (rb != null)
             {
+<<<<<<< Updated upstream
                 Vector3 locate = new Vector3(hit.gameObject.transform.position.x, 0f, hit.gameObject.transform.position.z);
                 Vector3 direction = locate - explosionPos;
                 Destroy(rocket);
                 rb.AddForce(direction.x * knockbackForce, 0, direction.z * knockbackForce);
                 rb.AddExplosionForce(power, explosionPos, radius, 0);
+=======
+                Vector2 locate = new Vector2(hit.gameObject.transform.position.x, hit.gameObject.transform.position.z);
+                Vector2 direction = new Vector2(locate.x - explosionPos.x, locate.y - explosionPos.z);
+                direction.Normalize();
+                Destroy(rocket);
+                rb.AddForce(new Vector3(direction.x * knockbackForce, 0,direction.y * knockbackForce));
+                rb.AddExplosionForce(power, explosionPos, radius, 1);
+>>>>>>> Stashed changes
             }
 
             Instantiate(explosiveFX, rocket.transform.position, rocket.transform.rotation);

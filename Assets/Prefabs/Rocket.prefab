@@ -147,10 +147,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
+<<<<<<< Updated upstream
   power: 1000
   radius: 10
+=======
+  power: 500
+  radius: 3
+>>>>>>> Stashed changes
   hitLayer: 3
   explodeLayer: 6
   rocket: {fileID: 7019799244140303444}
   explosiveFX: {fileID: 6187240968172533386, guid: 5883cdebc1d977d4b8b605ffcf7ce0ff, type: 3}
-  knockbackForce: 1000
+  knockbackForce: 500
