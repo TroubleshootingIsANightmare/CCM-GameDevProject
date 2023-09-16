@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float counterMovement;
     public float maxSpeed;
-    public float multiplier = 1f;
+    public float multiplier = 1f, vMult = 1f;
     public Animator animator;
     public float speed;
     public float jumpCooldown;
@@ -74,16 +74,12 @@ public class PlayerMovement : MonoBehaviour
         float threshold = 30f;
 
         //Detect if angle is less than threshold
-        if (angle <= threshold && Input.GetAxisRaw("Vertical") > 0 && grounded || !grounded && angle <= threshold)
-        {
+        if (angle <= threshold && Input.GetAxisRaw("Vertical") > 0 && grounded || !grounded && angle <= threshold) emit.rateOverTime = rb.velocity.magnitude;
+        else emit.rateOverTime = 0;
 
-            emit.rateOverTime = rb.velocity.magnitude;
-        }
-        else
-        {
 
-            emit.rateOverTime = 0;
-        }
+
+
 
 
 
@@ -99,10 +95,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        
 
         rb.AddForce(Vector2.up * jumpForce * 1.5f);
-        rb.AddForce(moveDirection * jumpForce * 0.5f);
+        rb.AddForce(moveDirection * jumpForce * 0.025f);
 
     }
 
@@ -120,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
 
-        if (Input.GetKeyDown(jumpKey) && readyToJump && grounded)
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
             Jump();
@@ -135,24 +131,30 @@ public class PlayerMovement : MonoBehaviour
         Vector2 mag = FindVelRelativeToLook();
         float xMag = mag.x, yMag = mag.y;
         CounterMovement(horizontalInput, verticalInput, mag);
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        moveDirection = vMult * orientation.forward * verticalInput + orientation.right * horizontalInput;
 
 
         if (horizontalInput > 0 && xMag > maxSpeed) horizontalInput = 0;
         if (horizontalInput < 0 && xMag < -maxSpeed) horizontalInput = 0;
         if (verticalInput > 0 && yMag > maxSpeed) verticalInput = 0;
         if (verticalInput < 0 && yMag < -maxSpeed) verticalInput = 0;
+        
 
         if (grounded)
         {
             maxSpeed = maxGroundSpeed;
-            rb.AddForce(moveDirection.normalized * speed * multiplier * Time.deltaTime);
+            multiplier = 1f;
+            vMult = 1f;
         }
         if (!grounded)
         {
             maxSpeed = maxAirSpeed;
-            rb.AddForce(moveDirection.normalized * speed * airSpeedMultiplier * Time.deltaTime * 0.5f);
+            multiplier = 0.5f;
+            vMult = 0.5f;
         }
+
+        rb.AddForce(orientation.right * horizontalInput * speed * multiplier * Time.deltaTime);
+        rb.AddForce(vMult * orientation.forward * verticalInput * speed * multiplier * Time.deltaTime);
     }
 
     public Vector2 FindVelRelativeToLook()
@@ -175,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!grounded) return;
 
-
+        if (horizontalInput == 0 && verticalInput == 0) rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, 0, 0), 0.5f);
         //Counter movement
         if (Mathf.Abs(mag.x) > counterThreshold && Mathf.Abs(x) < 0.05f || (mag.x < -counterThreshold && x > 0) || (mag.x > counterThreshold && x < 0))
         {

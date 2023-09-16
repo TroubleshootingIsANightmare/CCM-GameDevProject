@@ -147,8 +147,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112519487}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.17364816, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 0.1, z: -0.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -156,7 +156,7 @@ Transform:
   - {fileID: 1203440658}
   - {fileID: 826190311}
   m_Father: {fileID: 1354513094}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
 --- !u!1 &246808331
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436731808}
-  m_Material: {fileID: 13400000, guid: f23746bf034d1c24290e1c583201eb05, type: 2}
+  m_Material: {fileID: 13400000, guid: 5baa0b9100a04a54aba15ca570fa185b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2276,10 +2276,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2961802486378804416, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961802486378804416, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: pcamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: jumpForce
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: speedParticles
       value: 

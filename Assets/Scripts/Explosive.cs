@@ -58,7 +58,7 @@ public class Explosive : MonoBehaviour
                 direction.Normalize();
                 Destroy(rocket);
                 rb.AddForce(new Vector3(direction.x * knockbackForce, 0, direction.y * knockbackForce));
-                rb.AddExplosionForce(power, explosionPos, radius, 1);
+                rb.AddExplosionForce(power, explosionPos, radius, 3);
             }
 
             Instantiate(explosiveFX, rocket.transform.position, rocket.transform.rotation);

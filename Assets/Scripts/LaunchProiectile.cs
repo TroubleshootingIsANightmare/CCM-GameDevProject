@@ -41,25 +41,9 @@ public class LaunchProiectile : MonoBehaviour
         
         AmmoIconControl();
 
-        if (Input.GetKey(KeyCode.Mouse0) && auto)
-        {
-            shooting = true;
-        }
-        else
-        {
-            shooting = Input.GetKeyDown(KeyCode.Mouse0);
-        }
-        if (shooting && canShoot && ammo > 0)
-        {
-            firing= true;
-            canShoot = false;
-            Shoot();
-            
-        }
-        if (Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo && !reloading)
-        {
-            Reload();
-        }
+
+
+
 
         if ((reloading || resetting || ammo <= 0))
         {
@@ -78,6 +62,30 @@ public class LaunchProiectile : MonoBehaviour
 
     }
 
+     void Update()
+    {
+        if (Input.GetKey(KeyCode.Mouse0) && auto)
+        {
+            shooting = true;
+        }
+        else
+        {
+            shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo && !reloading)
+        {
+            Reload();
+        }
+
+        if (shooting && canShoot && ammo > 0)
+        {
+            firing = true;
+            canShoot = false;
+            Shoot();
+
+        }
+    }
 
     void Shoot()
     {
