@@ -35,17 +35,11 @@ public class PlayerMovement : MonoBehaviour
 
     public float counterMovement;
     public float maxSpeed;
-<<<<<<< Updated upstream
     public bool running;
     public float runSpeed;
     public bool moving;
     public bool launched;
     public Vector2 maxRunVel;
-=======
-    public float multiplier = 1f;
-    public LayerMask punchLayer;
-    public Animator animator;
->>>>>>> Stashed changes
     public float speed;
 
 
@@ -61,42 +55,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        //Grab the rigidbody from the player
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
     }
     void Update()
     {
-<<<<<<< Updated upstream
         maxRunVel = new Vector2(rb.velocity.x, rb.velocity.z);
         Debug.Log(rb.velocity.magnitude);
         Debug.Log(maxRunVel);
 
-=======
-        //Print the velocity
-        Debug.Log(rb.velocity.magnitude);
-
-        //Extra Gravity
->>>>>>> Stashed changes
         rb.AddForce(0f, -10f * Time.deltaTime, 0f, ForceMode.Force);
-
-        //Detect the ground using ray
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, ground);
-
-        //Particles rate of emission based on rb speed
         var emit = speedParticles.emission;
         Vector3 velocityForward = rb.velocity;
         velocityForward.y = 0f;
         velocityForward.Normalize();
 
-        //Float to check if facing in the same direction as moving
         float angle = Vector3.Angle(orientation.forward, velocityForward);
 
-        //Number of degrees which count as facing forward
         float threshold = 30f;
 
-        //Detect if angle is less than threshold
         if (angle <= threshold && Input.GetAxisRaw("Vertical") > 0 && grounded || !grounded && angle <= threshold)
         {
 
@@ -106,26 +85,22 @@ public class PlayerMovement : MonoBehaviour
 
             emit.rateOverTime = 0;
         }
-        //Call input 
-        MyInput();
-        
 
+
+        MyInput();
+        SpeedControl();
 
     }
     void FixedUpdate()
     {
-        //Call move every single tick, regardless of frame rate
         Move();
-
     }
 
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(Vector2.up * jumpForce * 1.5f);
-        rb.AddForce(moveDirection * jumpForce * 0.5f);
-        
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
     void ResetJump()
@@ -133,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     } 
 
-<<<<<<< Updated upstream
     void SpeedControl()
     {
         float fallSpeed = rb.velocity.y;
@@ -150,17 +124,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-=======
-    
->>>>>>> Stashed changes
     void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-<<<<<<< Updated upstream
-=======
-        
->>>>>>> Stashed changes
 
         if(Input.GetKeyDown(jumpKey) && readyToJump && grounded)
         {
@@ -199,23 +166,10 @@ public class PlayerMovement : MonoBehaviour
         CounterMovement(horizontalInput, verticalInput, mag);
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-<<<<<<< Updated upstream
         if(grounded && !running && launched)
         {
             maxSpeed = maxGroundSpeed;
             rb.AddForce(moveDirection.normalized * speed * Time.deltaTime, ForceMode.Impulse);
-=======
-        if (horizontalInput > 0 && xMag > maxSpeed) horizontalInput = 0;
-        if (horizontalInput < 0 && xMag < -maxSpeed) horizontalInput = 0;
-        if (verticalInput > 0 && yMag > maxSpeed) verticalInput = 0;
-        if (verticalInput < 0 && yMag < -maxSpeed) verticalInput = 0;
-
-        if (grounded)
-        {
-            maxSpeed = maxGroundSpeed;
-            rb.AddForce(moveDirection.normalized * speed * multiplier * Time.deltaTime);
-
->>>>>>> Stashed changes
         }
 
 
@@ -223,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
         if(!grounded && !running && launched)
         {
             maxSpeed = maxAirSpeed;
-            rb.AddForce(moveDirection.normalized * speed * airSpeedMultiplier * Time.deltaTime * 0.5f);
+            rb.AddForce(moveDirection.normalized * speed * Time.deltaTime * airSpeedMultiplier, ForceMode.Impulse);
         }
 
         if(running)
