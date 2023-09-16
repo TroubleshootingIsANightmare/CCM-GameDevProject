@@ -185,7 +185,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8564387571307282568}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -225,26 +225,21 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  counterThreshold: 0.1
   playerHeight: 1.4
   grounded: 0
-  groundDrag: 5
+  groundDrag: 0
   maxGroundSpeed: 30
-  airSpeedMultiplier: 0.2
-  maxAirSpeed: 60
+  airSpeedMultiplier: 0.25
+  maxAirSpeed: 30
   readyToJump: 0
-  canPunch: 0
-  punchable: 0
-  jumpForce: 150
+  jumpForce: 60
+  counterMovement: 5
   maxSpeed: 5
-  punchDamage: 0
-  punchCooldown: 0
-  punchRange: 0
-  punchLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  multiplier: 1
   animator: {fileID: 6513866742225312096}
-  speed: 1200
-  jumpCooldown: 1
+  speed: 4500
+  jumpCooldown: 0.25
   horizontalInput: 0
   verticalInput: 0
   speedParticles: {fileID: 0}
