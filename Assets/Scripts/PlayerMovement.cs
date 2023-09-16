@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,15 +11,16 @@ public class PlayerMovement : MonoBehaviour
     public Transform orientation;
     public Camera pcamera;
     public float fov;
+    public float playerHeight;
+    public Transform player;
 
     [Header("Keys")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode punchKey = KeyCode.F;
+    public KeyCode slideKey = KeyCode.LeftShift;
 
     [Header("Grounded")]
     public LayerMask ground;
     public float counterThreshold;
-    public float playerHeight;
     public bool grounded;
     public float groundDrag;
     public float maxGroundSpeed;
@@ -27,17 +30,19 @@ public class PlayerMovement : MonoBehaviour
     public float maxAirSpeed;
 
     [Header("Movement")]
-    public bool readyToJump;
-    public float jumpForce;
+    public bool readyToJump, readyToSlide, jumping, sliding;
+    public float jumpForce, slideForce;
     public float counterMovement;
     public float maxSpeed;
     public float multiplier = 1f, vMult = 1f;
-    public Animator animator;
     public float speed;
-    public float jumpCooldown;
+    public float jumpCooldown, slideCooldown;
     public float horizontalInput, verticalInput;
-    Vector3 moveDirection;
+    Vector3 playerScale = new Vector3(1f,1f,1f);
+    Vector3 slideScale = new Vector3(1f, 0.5f, 1f);
 
+    Vector3 moveDirection;
+    Vector3 inputDirection;
 
     [Header("Particles")]
     public ParticleSystem speedParticles;
@@ -95,8 +100,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        
 
+        jumping = true;
         rb.AddForce(Vector2.up * jumpForce * 1.5f);
         rb.AddForce(moveDirection * jumpForce * 0.025f);
 
@@ -123,6 +128,30 @@ public class PlayerMovement : MonoBehaviour
             Invoke("ResetJump", jumpCooldown);
         }
 
+        if (Input.GetKey(slideKey) && readyToSlide && !sliding && horizontalInput != 0 || Input.GetKey(slideKey) && readyToSlide && !sliding && verticalInput != 0)
+        {
+            readyToSlide = false;
+            sliding = true;
+            inputDirection = orientation.forward * verticalInput + horizontalInput * orientation.right;
+            
+        }
+        if (!Input.GetKey(slideKey)) sliding = false;
+
+        if (sliding) Slide(); player.localScale = slideScale;
+        if(!sliding) player.localScale = playerScale;
+
+    }
+
+    void Slide()
+    {
+        rb.AddForce(inputDirection  * slideForce * Time.deltaTime, ForceMode.Impulse);
+        Invoke("ResetSlide", slideCooldown);
+    }
+
+    void ResetSlide()
+    {
+        sliding = false;
+        readyToSlide = true;
     }
 
 
@@ -140,13 +169,23 @@ public class PlayerMovement : MonoBehaviour
         if (verticalInput < 0 && yMag < -maxSpeed) verticalInput = 0;
         
 
-        if (grounded)
+        if (grounded && !sliding)
         {
+            jumping = false;
             maxSpeed = maxGroundSpeed;
             multiplier = 1f;
             vMult = 1f;
         }
-        if (!grounded)
+        if(sliding)
+        {
+            vMult = 0f;
+            multiplier = 0f;
+        }
+        if(sliding && grounded)
+        {
+            rb.AddForce(0,-3000f,0, ForceMode.Impulse);
+        }
+        if (!grounded && !sliding)
         {
             maxSpeed = maxAirSpeed;
             multiplier = 0.5f;
@@ -175,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!grounded) return;
+        if (!grounded || sliding) return;
 
         if (horizontalInput == 0 && verticalInput == 0) rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, 0, 0), 0.5f);
         //Counter movement

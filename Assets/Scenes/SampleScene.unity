@@ -1180,6 +1180,11 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1325906058 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1252710824312049081, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+  m_PrefabInstance: {fileID: 4723512757953280198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1328875095
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,6 +2281,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1252710824312049081, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2961802486378804416, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: m_Drag
       value: 0
@@ -2285,12 +2294,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1325906058}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: pcamera
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: jumpForce
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: slideForce
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: readyToSlide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: slideCooldown
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: speedParticles
