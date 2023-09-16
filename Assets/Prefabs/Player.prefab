@@ -225,18 +225,16 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
-  counterThreshold: 0
   playerHeight: 1.4
   grounded: 0
   groundDrag: 5
-  maxGroundSpeed: 20
+  maxGroundSpeed: 30
   airSpeedMultiplier: 0.2
-  maxAirSpeed: 45
+  maxAirSpeed: 60
   readyToJump: 0
   canPunch: 0
   punchable: 0
   jumpForce: 150
-  counterMovement: 0
   maxSpeed: 5
   punchDamage: 0
   punchCooldown: 0

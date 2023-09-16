@@ -147,8 +147,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   power: 1000
+=======
+  power: 1500
+>>>>>>> parent of 8675f09 (Changed Movement)
   radius: 10
 =======
   power: 500
