@@ -2314,6 +2314,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: slideMaxTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: slideCooldown
       value: 0.5
       objectReference: {fileID: 0}
@@ -2324,6 +2328,10 @@ PrefabInstance:
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: counterMovement
       value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: slideCounterMovement
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8564387571307282568, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: m_Name

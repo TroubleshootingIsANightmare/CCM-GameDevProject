@@ -32,7 +32,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public bool readyToJump, readyToSlide, jumping, sliding;
     public float jumpForce, slideForce;
-    public float counterMovement;
+    public float slideTimer, slideMaxTime;
+    public float counterMovement, slideCounterMovement = 2f;
     public float maxSpeed;
     public float multiplier = 1f, vMult = 1f;
     public float speed;
@@ -128,31 +129,28 @@ public class PlayerMovement : MonoBehaviour
             Invoke("ResetJump", jumpCooldown);
         }
 
-        if (Input.GetKey(slideKey) && readyToSlide && !sliding && horizontalInput != 0 || Input.GetKey(slideKey) && readyToSlide && !sliding && verticalInput != 0)
+        if (Input.GetKeyDown(slideKey) && !sliding && horizontalInput != 0 && grounded || Input.GetKeyDown(slideKey) && readyToSlide && !sliding && verticalInput != 0 && grounded)
         {
-            readyToSlide = false;
+
             sliding = true;
             inputDirection = orientation.forward * verticalInput + horizontalInput * orientation.right;
-            
         }
-        if (!Input.GetKey(slideKey)) sliding = false;
+
+        if (Input.GetKeyUp(slideKey)) sliding = false;
 
         if (sliding) Slide(); player.localScale = slideScale;
         if(!sliding) player.localScale = playerScale;
+        if(sliding && rb.velocity.magnitude < 3f) {
+            sliding = false;
+        }
 
     }
 
     void Slide()
     {
-        rb.AddForce(inputDirection  * slideForce * Time.deltaTime, ForceMode.Impulse);
-        Invoke("ResetSlide", slideCooldown);
+        rb.AddForce(inputDirection.normalized  * slideForce);
     }
 
-    void ResetSlide()
-    {
-        sliding = false;
-        readyToSlide = true;
-    }
 
 
     void Move()
@@ -183,13 +181,17 @@ public class PlayerMovement : MonoBehaviour
         }
         if(sliding && grounded)
         {
-            rb.AddForce(0,-3000f,0, ForceMode.Impulse);
+            rb.AddForce(Vector3.down * Time.deltaTime * 3000);
         }
         if (!grounded && !sliding)
         {
             maxSpeed = maxAirSpeed;
             multiplier = 0.5f;
             vMult = 0.5f;
+        }
+        if(sliding && !grounded)
+        {
+            sliding = false;
         }
 
         rb.AddForce(orientation.right * horizontalInput * speed * multiplier * Time.deltaTime);
@@ -214,7 +216,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!grounded || sliding) return;
+        if (!grounded) return;
+
+        if (sliding)
+        {
+            rb.AddForce(speed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement );
+            return;
+        }
 
         if (horizontalInput == 0 && verticalInput == 0) rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, 0, 0), 0.5f);
         //Counter movement
