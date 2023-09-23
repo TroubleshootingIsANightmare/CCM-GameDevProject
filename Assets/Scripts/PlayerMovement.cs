@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
             Invoke("ResetJump", jumpCooldown);
         }
 
-        if (Input.GetKeyDown(slideKey) && !sliding && horizontalInput != 0 && grounded || Input.GetKeyDown(slideKey) && readyToSlide && !sliding && verticalInput != 0 && grounded)
+        if (Input.GetKeyDown(slideKey) && !sliding && horizontalInput != 0|| Input.GetKeyDown(slideKey) && readyToSlide && !sliding && verticalInput != 0)
         {
 
             sliding = true;
@@ -148,7 +148,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Slide()
     {
-        rb.AddForce(inputDirection.normalized  * slideForce);
+        if (grounded)
+        {
+            rb.AddForce(inputDirection.normalized * slideForce);
+        }
     }
 
 
