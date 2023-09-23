@@ -61,8 +61,6 @@ public class PlayerMovement : MonoBehaviour
         //Print the velocity
         Debug.Log(rb.velocity.magnitude);
 
-        //Extra Gravity
-        rb.AddForce(0f, -10f * Time.deltaTime, 0f, ForceMode.Force);
 
         //Detect the ground using ray
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, ground);
@@ -129,28 +127,35 @@ public class PlayerMovement : MonoBehaviour
             Invoke("ResetJump", jumpCooldown);
         }
 
-        if (Input.GetKeyDown(slideKey) && !sliding && horizontalInput != 0|| Input.GetKeyDown(slideKey) && readyToSlide && !sliding && verticalInput != 0)
+        if (Input.GetKeyDown(slideKey) && !sliding && horizontalInput != 0 && readyToSlide|| Input.GetKeyDown(slideKey) && readyToSlide && !sliding && verticalInput != 0)
         {
 
             sliding = true;
             inputDirection = orientation.forward * verticalInput + horizontalInput * orientation.right;
         }
 
-        if (Input.GetKeyUp(slideKey)) sliding = false;
+        if (!Input.GetKey(slideKey)) sliding = false;
 
-        if (sliding) Slide(); player.localScale = slideScale;
-        if(!sliding) player.localScale = playerScale;
-        if(sliding && rb.velocity.magnitude < 3f) {
+        if (sliding) Slide(); player.localScale = slideScale; transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+        if(!sliding) player.localScale = playerScale; playerHeight = 1.4f; transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        if(sliding && rb.velocity.magnitude < 2f)
+        {
             sliding = false;
         }
+
+
 
     }
 
     void Slide()
     {
-        if (grounded)
+        if (rb.velocity.magnitude > 0.5f)
         {
-            rb.AddForce(inputDirection.normalized * slideForce);
+            if (grounded)
+            {
+                rb.AddForce(inputDirection.normalized * slideForce);
+
+            }
         }
     }
 
@@ -163,6 +168,7 @@ public class PlayerMovement : MonoBehaviour
         CounterMovement(horizontalInput, verticalInput, mag);
         moveDirection = vMult * orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        rb.AddForce(Vector3.down * Time.deltaTime * 10);
 
         if (horizontalInput > 0 && xMag > maxSpeed) horizontalInput = 0;
         if (horizontalInput < 0 && xMag < -maxSpeed) horizontalInput = 0;
@@ -179,26 +185,29 @@ public class PlayerMovement : MonoBehaviour
         }
         if(sliding)
         {
-            vMult = 0f;
-            multiplier = 0f;
+            playerHeight = 0.7f;
+            if (grounded)
+            {
+                vMult = 0f;
+                multiplier = 0f;
+            }
         }
-        if(sliding && grounded)
+        if(sliding && grounded && readyToJump)
         {
             rb.AddForce(Vector3.down * Time.deltaTime * 3000);
         }
-        if (!grounded && !sliding)
+        if (!grounded)
         {
+            inputDirection = orientation.forward;
             maxSpeed = maxAirSpeed;
             multiplier = 0.5f;
             vMult = 0.5f;
         }
-        if(sliding && !grounded)
-        {
-            sliding = false;
-        }
+
+
 
         rb.AddForce(orientation.right * horizontalInput * speed * multiplier * Time.deltaTime);
-        rb.AddForce(vMult * orientation.forward * verticalInput * speed * multiplier * Time.deltaTime);
+        rb.AddForce(vMult * orientation.forward * verticalInput * speed * 0.5f * Time.deltaTime);
     }
 
     public Vector2 FindVelRelativeToLook()
@@ -223,7 +232,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (sliding)
         {
-            rb.AddForce(speed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement );
+
+            rb.AddForce(speed * Time.deltaTime * -rb.velocity.normalized * slideCounterMovement);
+
+            rb.velocity = Vector3.Lerp(rb.velocity, new Vector3(0, 0, 0), 0.01f);
+
             return;
         }
 

@@ -2303,6 +2303,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: fov
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1325906058}
@@ -2312,7 +2316,7 @@ PrefabInstance:
       objectReference: {fileID: 963194227}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: jumpForce
-      value: 600
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: slideForce
