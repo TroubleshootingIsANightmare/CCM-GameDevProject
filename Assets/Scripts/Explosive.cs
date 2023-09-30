@@ -31,7 +31,6 @@ public class Explosive : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Explode");
         if(other.gameObject.layer == hitLayer)
         {
             Explode();
@@ -44,10 +43,9 @@ public class Explosive : MonoBehaviour
         
         Vector3 explosionPos = transform.position;
         Collider[] hits = Physics.OverlapSphere(explosionPos, radius);
-        
+        Instantiate(explosiveFX, rocket.transform.position, rocket.transform.rotation);
         foreach (Collider hit in hits)
         {
-            Debug.Log("Hit");
             Rigidbody rb = hit.GetComponent<Rigidbody>();
  
 
@@ -61,7 +59,7 @@ public class Explosive : MonoBehaviour
                 rb.AddExplosionForce(power, explosionPos, radius, 3);
             }
 
-            Instantiate(explosiveFX, rocket.transform.position, rocket.transform.rotation);
+            
         }
     }
 }
