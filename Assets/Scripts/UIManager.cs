@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 {
     public Rigidbody rb;
     public KeyCode res = KeyCode.RightShift;
+    public KeyCode menu = KeyCode.UpArrow;
     public TMP_Text speed;
     public bool spd;
     public GameObject player;
@@ -30,6 +31,12 @@ public class UIManager : MonoBehaviour
         if(Input.GetKeyUp(res))
         {
             Restart();
+        }
+        if (Input.GetKeyUp(menu))
+        {
+            SceneManager.LoadScene(2);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
