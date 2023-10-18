@@ -169,7 +169,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.302, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6166963119506079363}
   - {fileID: 6439262053624449846}
@@ -187,7 +187,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -220,26 +220,35 @@ MonoBehaviour:
   orientation: {fileID: 6439262053624449846}
   pcamera: {fileID: 0}
   fov: 90
+  playerHeight: 1.4
+  player: {fileID: 1252710824312049081}
   jumpKey: 32
-  punchKey: 102
+  slideKey: 304
   ground:
     serializedVersion: 2
     m_Bits: 8
   counterThreshold: 0.1
-  playerHeight: 1.4
   grounded: 0
   groundDrag: 0
   maxGroundSpeed: 30
   airSpeedMultiplier: 0.25
   maxAirSpeed: 30
   readyToJump: 0
-  jumpForce: 60
-  counterMovement: 5
+  readyToSlide: 1
+  jumping: 0
+  sliding: 0
+  jumpForce: 700
+  slideForce: 300
+  slideTimer: 0
+  slideMaxTime: 1
+  counterMovement: 0.175
+  slideCounterMovement: 3.5
   maxSpeed: 5
   multiplier: 1
-  animator: {fileID: 6513866742225312096}
+  vMult: 1
   speed: 4500
   jumpCooldown: 0.25
+  slideCooldown: 0.5
   horizontalInput: 0
   verticalInput: 0
   speedParticles: {fileID: 0}
