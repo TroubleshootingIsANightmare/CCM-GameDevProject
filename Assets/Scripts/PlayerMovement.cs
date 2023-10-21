@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask ground;
     public float counterThreshold;
     public bool grounded;
-    public float groundDrag;
+
     public float maxGroundSpeed;
 
     [Header("Air")]

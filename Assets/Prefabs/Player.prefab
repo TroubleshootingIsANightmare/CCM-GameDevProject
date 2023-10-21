@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 6513866742225312096}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,7 +229,6 @@ MonoBehaviour:
     m_Bits: 8
   counterThreshold: 0.1
   grounded: 0
-  groundDrag: 0
   maxGroundSpeed: 30
   airSpeedMultiplier: 0.25
   maxAirSpeed: 30
@@ -243,7 +242,7 @@ MonoBehaviour:
   slideMaxTime: 1
   counterMovement: 0.175
   slideCounterMovement: 3.5
-  maxSpeed: 5
+  maxSpeed: 30
   multiplier: 1
   vMult: 1
   speed: 4500
