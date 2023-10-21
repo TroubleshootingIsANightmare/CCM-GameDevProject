@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (sliding) Slide(); player.localScale = slideScale; transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
         if(!sliding) player.localScale = playerScale; playerHeight = 1.4f; transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        if(sliding && rb.velocity.magnitude < 2f)
+        if(sliding && rb.velocity.magnitude < 0.1f)
         {
             sliding = false;
         }
@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Slide()
     {
-        if (rb.velocity.magnitude > 0.5f)
+        if (rb.velocity.magnitude > 0.1f)
         {
             if (grounded)
             {
