@@ -33,6 +33,7 @@ public class LaunchProiectile : MonoBehaviour
         firing = false;
         canShoot = true;
         AmmoIconControl();
+        player = GameObject.Find("Player").GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

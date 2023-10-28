@@ -1,34 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class RespawnPlayer : MonoBehaviour
 {
-    public Transform respawn;
-    public Rigidbody rb;
-    public Timer time;
+    public TMP_Text death;
+    bool paused;
 
     // Start is called before the first frame update
     void Start()
     {
-      
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(paused) Time.timeScale = 0f; else Time.timeScale = 1f;
+        if(paused && Input.anyKey) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.transform.position = respawn.position;
-            rb = other.GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(0, 0, 0);
-            time.i = 0f;
-            other.gameObject.transform.rotation = Quaternion.identity;
+            Instantiate(death.gameObject, GameObject.Find("PlayerUI").transform);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+      
+            paused = true;
         }
     }
+
+
 }
