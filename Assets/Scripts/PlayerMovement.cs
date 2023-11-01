@@ -23,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
     public float counterThreshold;
     public bool grounded;
 
-    public float maxGroundSpeed;
-
     [Header("Air")]
     public float airSpeedMultiplier;
     public float maxAirSpeed;
@@ -32,9 +30,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public bool readyToJump, readyToSlide, jumping, sliding;
     public float jumpForce, slideForce;
-    public float slideTimer, slideMaxTime;
     public float counterMovement, slideCounterMovement = 2f;
-    public float maxSpeed;
+    public float maxSpeed = 30f;
     public float multiplier = 1f, vMult = 1f;
     public float speed;
     public float jumpCooldown, slideCooldown;
@@ -58,9 +55,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        //Print the velocity
-        Debug.Log(rb.velocity.magnitude);
-
 
         //Detect the ground using ray
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, ground);
@@ -80,8 +74,6 @@ public class PlayerMovement : MonoBehaviour
         //Detect if angle is less than threshold
         if (angle <= threshold && Input.GetAxisRaw("Vertical") > 0 && grounded || !grounded && angle <= threshold) emit.rateOverTime = rb.velocity.magnitude;
         else emit.rateOverTime = 0;
-
-
 
 
 
@@ -119,6 +111,16 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            Cursor.lockState= CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        if(Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
@@ -179,7 +181,6 @@ public class PlayerMovement : MonoBehaviour
         if (grounded && !sliding)
         {
             jumping = false;
-            maxSpeed = maxGroundSpeed;
             multiplier = 1f;
             vMult = 1f;
         }
@@ -199,7 +200,6 @@ public class PlayerMovement : MonoBehaviour
         if (!grounded)
         {
             inputDirection = orientation.forward;
-            maxSpeed = maxAirSpeed;
             multiplier = 0.5f;
             vMult = 0.5f;
         }

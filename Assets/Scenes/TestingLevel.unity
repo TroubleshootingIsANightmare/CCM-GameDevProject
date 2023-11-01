@@ -890,8 +890,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1114040587}
+  res: 303
+  menu: 273
   speed: {fileID: 1179314412}
   spd: 1
+  player: {fileID: 0}
+  respawn: {fileID: 0}
 --- !u!1 &1205454360
 GameObject:
   m_ObjectHideFlags: 0
@@ -6728,6 +6732,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 801456320515525620, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801456320515525620, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4236276736683761641, guid: c9ef091846d77c34785b963813fd2777, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -6776,6 +6788,18 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 561648095}
+    - target: {fileID: 7312732685497076376, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312732685497076376, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312732685497076376, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7727505076974180786, guid: c9ef091846d77c34785b963813fd2777, type: 3}
       propertyPath: player
       value: 
