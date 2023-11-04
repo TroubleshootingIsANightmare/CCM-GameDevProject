@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8113236272220341459}
   - component: {fileID: 5675049229275022521}
   - component: {fileID: 2538481718824550590}
+  - component: {fileID: 2467735494530530487}
   m_Layer: 0
-  m_Name: ShotgunBullet
+  m_Name: ShotgunBulletExplosive
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,3 +134,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2467735494530530487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8018149648011484281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b386801a48499494fb37af9b38f11bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5
+  power: 100
+  radius: 4
+  hitLayer: 3
+  canExplode: 1
+  explodeLayer: 6
+  rocket: {fileID: 8018149648011484281}
+  explosiveFX: {fileID: 6187240968172533386, guid: 5883cdebc1d977d4b8b605ffcf7ce0ff, type: 3}
+  knockbackForce: 50

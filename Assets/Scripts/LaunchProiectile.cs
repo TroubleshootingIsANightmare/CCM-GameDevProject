@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Security.Cryptography;
 
 public class LaunchProiectile : MonoBehaviour
 {
     public GameObject projectile;
+    public GameObject gun;
+    public Vector3 originalPosition;
+    public bool chargable, charging;
+    public float chargeTimer, chargeForce, chargeMinimum;
+    public GameObject chargeBullet, originalBullet;
+    public Vector3 directionOfShake;
+    public float amplitude = 5f;
     public float speed;
     public Camera playerCam;
     public Transform shootPoint;
@@ -30,6 +38,8 @@ public class LaunchProiectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        originalPosition = transform.position;
         firing = false;
         canShoot = true;
         AmmoIconControl();
@@ -65,13 +75,26 @@ public class LaunchProiectile : MonoBehaviour
 
      void Update()
     {
+        directionOfShake = transform.forward;
         if (Input.GetKey(KeyCode.Mouse0) && auto)
         {
             shooting = true;
         }
-        else
+        else if(!chargable)
         {
             shooting = Input.GetKeyDown(KeyCode.Mouse0);
+        }
+        if(Input.GetKey(KeyCode.Mouse0) && chargable)
+        {
+            charging = true;
+        } else
+        {
+            chargeTimer = 0f;
+            charging = false;
+        }
+        if(Input.GetKeyUp(KeyCode.Mouse0) && chargable)
+        {
+            shooting = true;
         }
 
         if (Input.GetKeyDown(KeyCode.R) && ammo < maxAmmo && !reloading)
@@ -86,6 +109,26 @@ public class LaunchProiectile : MonoBehaviour
             Shoot();
 
         }
+        if(charging)
+        {
+            chargeTimer += Time.deltaTime*2f;
+            gun.transform.position = new Vector3(Mathf.PingPong(Time.time, 3), transform.position.y, transform.position.z);
+
+
+        }
+        if (chargeTimer >= chargeMinimum)
+        {
+            projectile = chargeBullet;
+
+            if (chargeForce > 300f)
+            {
+                chargeForce = 300f;
+            }
+        } else
+        {
+            projectile = originalBullet;
+        }
+        chargeForce = chargeTimer * 10f;
     }
 
     void Shoot()
@@ -93,8 +136,9 @@ public class LaunchProiectile : MonoBehaviour
         animator.SetBool("Fire", true);
         
         ResetShot();
-        
-        
+
+        canShoot = false;
+        shooting = false;
         AmmoIconControl();
 
         RaycastHit hit;
@@ -111,8 +155,9 @@ public class LaunchProiectile : MonoBehaviour
 
 
         }
+
         Vector3 direction = targetPoint - shootPoint.position;
-        player.AddForce(direction.normalized * -1 * recoil);
+        player.AddForce(direction.normalized * -1 * (recoil + chargeForce));
 
 
         for (int i = 0; i < bulletsFired; i++)
@@ -123,7 +168,7 @@ public class LaunchProiectile : MonoBehaviour
             currentBullet.transform.forward = direction.normalized;
             currentBullet.transform.Rotate(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread));
 
-            currentBullet.GetComponent<Rigidbody>().AddForce(currentBullet.transform.forward * speed, ForceMode.Impulse);
+            currentBullet.GetComponent<Rigidbody>().AddForce(currentBullet.transform.forward * (speed + chargeForce), ForceMode.Impulse);
 
         }
 
