@@ -150,6 +150,7 @@ MonoBehaviour:
   power: 750
   radius: 4.5
   hitLayer: 3
+  canExplode: 1
   explodeLayer: 6
   rocket: {fileID: 7019799244140303444}
   explosiveFX: {fileID: 6187240968172533386, guid: 5883cdebc1d977d4b8b605ffcf7ce0ff, type: 3}

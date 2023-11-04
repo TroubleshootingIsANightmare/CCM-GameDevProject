@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Explosive : MonoBehaviour
 {
-    public float lifeTime;
-    public float power;
-    public float radius;
-    public int hitLayer;
-    public int explodeLayer;
+    public float lifeTime = 5f;
+    public float power = 50f;
+    public float radius = 4f;
+    public int hitLayer = 3;
+    public bool canExplode;
+    public int explodeLayer = 6;
     public GameObject rocket;
     public GameObject explosiveFX;
-    public float knockbackForce;
+    public float knockbackForce = 50f;
     // Start is called before the first frame update
     void Start()
     {
+        rocket = this.gameObject;
         Invoke("Delete", lifeTime);
     }
 
@@ -31,10 +33,14 @@ public class Explosive : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == hitLayer)
+        if (canExplode)
         {
-            Explode();
+            Debug.Log("PLEASE");
+            if (other.gameObject.layer == hitLayer)
+            {
+                Explode();
 
+            }
         }
     }
 
