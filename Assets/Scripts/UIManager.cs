@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 using UnityEngine.SceneManagement;
 
 
@@ -42,7 +43,7 @@ public class UIManager : MonoBehaviour
 
     void ShowSpeed()
     {
-        speed.text = "Speed: " + rb.velocity.magnitude;
+        speed.text = "Speed: " + String.Format("{0:0.00}", rb.velocity.magnitude);
     }
 
     void Restart()

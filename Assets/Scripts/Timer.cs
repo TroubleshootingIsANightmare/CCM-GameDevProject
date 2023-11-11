@@ -21,6 +21,6 @@ public class Timer : MonoBehaviour
     void FixedUpdate()
     {
         i += Time.deltaTime;
-        _time.text = "Time: " + String.Format("{0:0.00}", i); ;
+        _time.text = "Time: " + String.Format("{0:0.00}", i); 
     }
 }

@@ -44,6 +44,9 @@ public class LaunchProiectile : MonoBehaviour
         canShoot = true;
         AmmoIconControl();
         player = GameObject.Find("Player").GetComponent<Rigidbody>();
+        animator.SetBool("Idle", true);
+        animator.SetBool("Fire", false);
+        animator.SetBool("Reloading", false);
     }
 
     // Update is called once per frame
@@ -84,7 +87,7 @@ public class LaunchProiectile : MonoBehaviour
         {
             shooting = Input.GetKeyDown(KeyCode.Mouse0);
         }
-        if(Input.GetKey(KeyCode.Mouse0) && chargable)
+        if(Input.GetKey(KeyCode.Mouse0) && chargable && canShoot && !reloading)
         {
             charging = true;
         } else
@@ -92,7 +95,7 @@ public class LaunchProiectile : MonoBehaviour
             chargeTimer = 0f;
             charging = false;
         }
-        if(Input.GetKeyUp(KeyCode.Mouse0) && chargable)
+        if(Input.GetKeyUp(KeyCode.Mouse0) && chargable && canShoot && !reloading)
         {
             shooting = true;
         }
@@ -112,23 +115,21 @@ public class LaunchProiectile : MonoBehaviour
         if(charging)
         {
             chargeTimer += Time.deltaTime*2f;
-            gun.transform.position = new Vector3(Mathf.PingPong(Time.time, 3), transform.position.y, transform.position.z);
-
 
         }
         if (chargeTimer >= chargeMinimum)
         {
             projectile = chargeBullet;
 
-            if (chargeForce > 300f)
+            if (chargeForce > 1000f)
             {
-                chargeForce = 300f;
+                chargeForce = 1000f;
             }
         } else
         {
             projectile = originalBullet;
         }
-        chargeForce = chargeTimer * 10f;
+        chargeForce = chargeTimer * 40f;
     }
 
     void Shoot()
@@ -168,7 +169,7 @@ public class LaunchProiectile : MonoBehaviour
             currentBullet.transform.forward = direction.normalized;
             currentBullet.transform.Rotate(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread));
 
-            currentBullet.GetComponent<Rigidbody>().AddForce(currentBullet.transform.forward * (speed + chargeForce), ForceMode.Impulse);
+            currentBullet.GetComponent<Rigidbody>().AddForce(currentBullet.transform.forward * (speed), ForceMode.Impulse);
 
         }
 
@@ -197,6 +198,7 @@ public class LaunchProiectile : MonoBehaviour
     {
         reloading = true;
         canShoot= false;
+        charging = false;
         Invoke("FinishReload", reloadSpeed);
         animator.SetBool("Reloading", true);
     }

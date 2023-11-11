@@ -2453,11 +2453,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962d060d5b731304fbc1025bc882dd63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 1432082573}
   res: 303
   menu: 273
-  speed: {fileID: 0}
-  spd: 0
+  speed: {fileID: 1900167282}
+  spd: 1
   player: {fileID: 1432082567}
   respawn: {fileID: 589239}
 --- !u!224 &1697238016 stripped
@@ -2638,6 +2638,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 7504138039820495306, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9961947
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504138039820495306, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.08715578
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504138039820495306, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7727505076974180786, guid: c9ef091846d77c34785b963813fd2777, type: 3}
       propertyPath: gun
       value: 
@@ -2685,6 +2697,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1697238015}
   m_SourcePrefab: {fileID: 100100000, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+--- !u!114 &1900167282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7106869344611297190, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+  m_PrefabInstance: {fileID: 1900167281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2036868057 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9127674417235301033, guid: c9ef091846d77c34785b963813fd2777, type: 3}
