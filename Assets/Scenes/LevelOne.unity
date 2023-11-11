@@ -2686,7 +2686,8 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 674315380}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6766701075609939082, guid: c9ef091846d77c34785b963813fd2777, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7971171812805406563, guid: c9ef091846d77c34785b963813fd2777, type: 3}

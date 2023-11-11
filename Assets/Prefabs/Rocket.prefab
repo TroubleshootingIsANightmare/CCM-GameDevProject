@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5349014790092923682}
   - component: {fileID: 5092973275581884352}
   - component: {fileID: 5446197252758026344}
-  - component: {fileID: 8816999678719511890}
   - component: {fileID: -5129587280527792735}
   - component: {fileID: 8196803920520056354}
+  - component: {fileID: 8279511240850499386}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Projectile
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 7019799244140303444}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.939192, y: -1.6493464, z: -6.2065744}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -11.42, y: -1.6611, z: -6.2065744}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -86,27 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8816999678719511890
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7019799244140303444}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-5129587280527792735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,3 +134,25 @@ MonoBehaviour:
   rocket: {fileID: 7019799244140303444}
   explosiveFX: {fileID: 6187240968172533386, guid: 5883cdebc1d977d4b8b605ffcf7ce0ff, type: 3}
   knockbackForce: 500
+--- !u!64 &8279511240850499386
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019799244140303444}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}

@@ -47,6 +47,7 @@ public class LaunchProiectile : MonoBehaviour
         animator.SetBool("Idle", true);
         animator.SetBool("Fire", false);
         animator.SetBool("Reloading", false);
+        projectile = originalBullet;
     }
 
     // Update is called once per frame
