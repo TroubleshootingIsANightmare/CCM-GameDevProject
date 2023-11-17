@@ -54,13 +54,13 @@ MonoBehaviour:
   chargeTimer: 0
   chargeForce: 0
   chargeMinimum: 0
-  chargeBullet: {fileID: 0}
-  originalBullet: {fileID: 0}
+  chargeBullet: {fileID: 7019799244140303444, guid: dc92c4cfed6278f4bb041a261d901b71, type: 3}
+  originalBullet: {fileID: 7019799244140303444, guid: dc92c4cfed6278f4bb041a261d901b71, type: 3}
   directionOfShake: {x: 0, y: 0, z: 0}
   amplitude: 5
   speed: 20
-  playerCam: {fileID: 0}
-  shootPoint: {fileID: 0}
+  playerCam: {fileID: 1277830071266350118, guid: 3189c8435d6ac054a841cb6e5b360056, type: 3}
+  shootPoint: {fileID: 3658925516347703990, guid: 82399544b8a52b84980e86597bf2879a, type: 3}
   auto: 0
   ammo: 4
   maxAmmo: 4
@@ -74,11 +74,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  bulletSprite: {fileID: 21300000, guid: 405e60afc6909ef4db4e191942fc951c, type: 3}
+  bulletSprite: {fileID: 21300000, guid: d11938031c668f041985ee9b85d4805a, type: 3}
   bulletsFired: 1
-  bulletUI: {fileID: 0}
+  bulletUI: {fileID: 2079551385972534133, guid: d0305ec5324c53b4b9ff52f6dd312a78, type: 3}
   spread: 0
-  player: {fileID: 0}
+  player: {fileID: 2961802486378804416, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
   recoil: 0
   distanceBetweenIcons: 50
   resetting: 0

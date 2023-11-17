@@ -875,7 +875,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e0ce330b359ad824bb002da14362f2e4, type: 2}
+  - {fileID: 2100000, guid: ed2c49386a7adf041846aa40b689539b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1497,7 +1497,7 @@ Transform:
   m_GameObject: {fileID: 1807057984}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.1164, y: 57.3, z: 111.9}
+  m_LocalPosition: {x: -20.1164, y: 57.3, z: 121.3}
   m_LocalScale: {x: 79.5, y: 119.1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6612,6 +6612,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1114040587}
+    - target: {fileID: 7727505076974180786, guid: c9ef091846d77c34785b963813fd2777, type: 3}
+      propertyPath: chargable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7727505076974180786, guid: c9ef091846d77c34785b963813fd2777, type: 3}
       propertyPath: chargeBullet
       value: 
