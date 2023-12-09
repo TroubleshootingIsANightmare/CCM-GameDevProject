@@ -68,7 +68,7 @@ MonoBehaviour:
   canShoot: 1
   reloading: 0
   reloadSpeed: 1
-  timeBetweenShots: 0.5
+  timeBetweenShots: 0.3
   bulletImage:
   - {fileID: 0}
   - {fileID: 0}

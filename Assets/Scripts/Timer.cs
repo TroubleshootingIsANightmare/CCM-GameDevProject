@@ -23,4 +23,10 @@ public class Timer : MonoBehaviour
         i += Time.deltaTime;
         _time.text = "Time: " + String.Format("{0:0.00}", i); 
     }
+
+
+    public float returnTime()
+    {
+        return i;
+    }
 }

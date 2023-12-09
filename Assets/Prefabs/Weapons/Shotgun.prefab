@@ -53,7 +53,7 @@ MonoBehaviour:
   charging: 0
   chargeTimer: 0
   chargeForce: 0
-  chargeMinimum: 2
+  chargeMinimum: 1
   chargeBullet: {fileID: 8018149648011484281, guid: 28428bf3b6fcd284fb50296c4c5f18ce, type: 3}
   originalBullet: {fileID: 8018149648011484281, guid: 7c6d486b1d430e6498f0765d20d59909, type: 3}
   directionOfShake: {x: 0, y: 0, z: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
   bulletUI: {fileID: 2079551385972534133, guid: d0305ec5324c53b4b9ff52f6dd312a78, type: 3}
   spread: 10
   player: {fileID: 2961802486378804416, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
-  recoil: 425
+  recoil: 500
   distanceBetweenIcons: 50
   resetting: 0
   animator: {fileID: 5645486347513978195}

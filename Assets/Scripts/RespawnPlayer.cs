@@ -9,7 +9,9 @@ using System;
 public class RespawnPlayer : MonoBehaviour
 {
     public TMP_Text death;
-    bool paused;
+    public bool paused;
+    public WinLevel winScript;
+    public bool pWin = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +22,9 @@ public class RespawnPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(paused) Time.timeScale = 0f; else Time.timeScale = 1f;
-        if(paused && Input.anyKey) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        pWin = winScript.returnWin();
+        if(!pWin && paused) Time.timeScale = 0f; else if (!pWin) Time.timeScale = 1f;
+        if(paused && Input.anyKey && !pWin) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
 
     }
@@ -37,6 +40,13 @@ public class RespawnPlayer : MonoBehaviour
             paused = true;
         }
     }
+
+    public bool returnRPaused()
+    {
+        return paused;
+    }
+
+  
 
 
 }

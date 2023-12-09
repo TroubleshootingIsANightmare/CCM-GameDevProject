@@ -54,5 +54,9 @@ public class UIManager : MonoBehaviour
 
     }
 
+    void playerWin()
+    {
+
+    }
 
 }

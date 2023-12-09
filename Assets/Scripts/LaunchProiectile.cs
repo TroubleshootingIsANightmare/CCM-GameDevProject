@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Security.Cryptography;
 
+
 public class LaunchProiectile : MonoBehaviour
 {
     public GameObject projectile;
@@ -121,16 +122,16 @@ public class LaunchProiectile : MonoBehaviour
         if (chargeTimer >= chargeMinimum)
         {
             projectile = chargeBullet;
-
-            if (chargeForce > 1000f)
+            Debug.Log(chargeTimer);
+            if (chargeTimer > 20f)
             {
-                chargeForce = 1000f;
+                chargeTimer = 20f;
             }
         } else
         {
             projectile = originalBullet;
         }
-        chargeForce = chargeTimer * 40f;
+        chargeForce = chargeTimer * 150f;
     }
 
     void Shoot()

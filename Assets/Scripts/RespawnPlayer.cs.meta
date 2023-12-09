@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - death: {fileID: 5706349575843819252, guid: 36bbc8951b45fe94187a72064b0fa303, type: 3}
+  - winScript: {fileID: 2290350854565159792, guid: cdf4526ddf06c2344b801bdc80a732dc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
