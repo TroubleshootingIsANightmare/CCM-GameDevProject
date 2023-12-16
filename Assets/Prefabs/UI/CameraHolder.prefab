@@ -707,8 +707,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3937702274433363098, guid: c0cd012f4d2fc794b89a7598e8351027, type: 3}
       propertyPath: m_text
-      value: You beat the level in 17.42021 seconds! Press the up arrow to return
-        to menu and p to restart the level.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6749576824974667155, guid: c0cd012f4d2fc794b89a7598e8351027, type: 3}
       propertyPath: m_Name
