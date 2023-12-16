@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
-  power: 750
-  radius: 4.5
+  power: 850
+  radius: 5
   hitLayer: 3
   canExplode: 1
   explodeLayer: 6

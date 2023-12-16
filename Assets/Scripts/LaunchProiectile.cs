@@ -116,13 +116,13 @@ public class LaunchProiectile : MonoBehaviour
         }
         if(charging)
         {
-            chargeTimer += Time.deltaTime*2f;
+            chargeTimer += Time.deltaTime*3f;
 
         }
         if (chargeTimer >= chargeMinimum)
         {
             projectile = chargeBullet;
-            Debug.Log(chargeTimer);
+            
             if (chargeTimer > 20f)
             {
                 chargeTimer = 20f;

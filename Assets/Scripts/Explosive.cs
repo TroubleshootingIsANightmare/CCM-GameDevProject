@@ -35,7 +35,7 @@ public class Explosive : MonoBehaviour
     {
         if (canExplode)
         {
-            Debug.Log("PLEASE");
+            
             if (other.gameObject.layer == hitLayer)
             {
                 Explode();
@@ -62,7 +62,7 @@ public class Explosive : MonoBehaviour
                 direction.Normalize();
                 Destroy(rocket);
                 rb.AddForce(new Vector3(direction.x * knockbackForce, 0, direction.y * knockbackForce));
-                rb.AddExplosionForce(power, explosionPos, radius, 3);
+                rb.AddExplosionForce(power, explosionPos, radius, 4);
             }
 
             

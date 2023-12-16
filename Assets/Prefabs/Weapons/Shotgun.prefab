@@ -67,7 +67,7 @@ MonoBehaviour:
   shooting: 0
   canShoot: 1
   reloading: 0
-  reloadSpeed: 1
+  reloadSpeed: 0.5
   timeBetweenShots: 0.25
   bulletImage:
   - {fileID: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
   bulletUI: {fileID: 2079551385972534133, guid: d0305ec5324c53b4b9ff52f6dd312a78, type: 3}
   spread: 10
   player: {fileID: 2961802486378804416, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
-  recoil: 500
+  recoil: 550
   distanceBetweenIcons: 50
   resetting: 0
   animator: {fileID: 5645486347513978195}
