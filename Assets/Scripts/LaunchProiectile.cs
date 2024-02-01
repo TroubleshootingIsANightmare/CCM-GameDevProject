@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Security.Cryptography;
+
 
 
 public class LaunchProiectile : MonoBehaviour
@@ -151,6 +150,7 @@ public class LaunchProiectile : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             targetPoint = hit.point;
+
         }
         else
         {

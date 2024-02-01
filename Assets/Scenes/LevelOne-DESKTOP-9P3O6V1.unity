@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2895,53 +2895,29 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1432082573}
+    - target: {fileID: 115576016441358854, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 115576016441358854, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 115576016441358854, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 115576016441358854, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 323913066765239731, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1432082573}
     - target: {fileID: 706114900828672166, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
       propertyPath: m_Name
-      value: CameraHolder
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_ApplyActiveColorSpace
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Parameters.textureMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: -8549260017417685994, guid: be00a64dec812460dbfdad4f868a999c, type: 3}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Parameters.numCapVertices
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Parameters.textureScale.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Parameters.textureScale.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Parameters.numCornerVertices
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1041387517433931485, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.304348
+      value: CameraHolder (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1201085397103312412, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2983,14 +2959,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3227217862398874568, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 3227217862398874568, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.455
-      objectReference: {fileID: 0}
     - target: {fileID: 6999441939843667641, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
       propertyPath: rb
       value: 
@@ -3003,6 +2971,14 @@ PrefabInstance:
       propertyPath: respawn
       value: 
       objectReference: {fileID: 589239}
+    - target: {fileID: 7545208498233873439, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545208498233873439, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7945228005426019724, guid: 7f08306d1559e264b91432e943bf2563, type: 3}
       propertyPath: orientation
       value: 
@@ -3200,6 +3176,10 @@ PrefabInstance:
       propertyPath: pcamera
       value: 
       objectReference: {fileID: 1245877024}
+    - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
+      propertyPath: maxSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4806235431400109443, guid: 637e83498c9377840b3a565dd81c984e, type: 3}
       propertyPath: speedParticles
       value: 
