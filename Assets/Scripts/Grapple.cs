@@ -11,6 +11,7 @@ public class Grapple : MonoBehaviour
     private Vector3 targetPoint;
     private GameObject player;
     private SpringJoint joint;
+    public LayerMask canGrapple;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +59,7 @@ public class Grapple : MonoBehaviour
     {
         RaycastHit hit;
         gPoint = transform.position;
-        if (Physics.Raycast(cam.gameObject.transform.position, cam.gameObject.transform.forward, out hit, maxDistance))
+        if (Physics.Raycast(cam.gameObject.transform.position, cam.gameObject.transform.forward, out hit, maxDistance, canGrapple))
         {
             targetPoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
