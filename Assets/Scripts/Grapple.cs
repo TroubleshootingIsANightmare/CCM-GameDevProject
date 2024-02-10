@@ -13,6 +13,7 @@ public class Grapple : MonoBehaviour
     private SpringJoint joint;
     public LayerMask canGrapple;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +53,7 @@ public class Grapple : MonoBehaviour
     void StopGrapple()
     {
         rope.enabled = false;
+
         Destroy(joint);
     }
 
@@ -62,6 +64,8 @@ public class Grapple : MonoBehaviour
         if (Physics.Raycast(cam.gameObject.transform.position, cam.gameObject.transform.forward, out hit, maxDistance, canGrapple))
         {
             targetPoint = hit.point;
+
+            
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = targetPoint;
