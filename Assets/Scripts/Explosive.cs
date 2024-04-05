@@ -9,7 +9,6 @@ public class Explosive : MonoBehaviour
     public float radius = 4f;
     public int hitLayer = 3;
     public bool canExplode;
-    public int explodeLayer = 6;
     public GameObject rocket;
     public GameObject explosiveFX;
     public float knockbackForce = 50f;
@@ -25,11 +24,7 @@ public class Explosive : MonoBehaviour
         Destroy(rocket);
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
-    }
+
 
     void OnTriggerEnter(Collider other)
     {

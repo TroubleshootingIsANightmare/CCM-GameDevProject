@@ -30,6 +30,7 @@ public class LaunchProiectile : MonoBehaviour
     public bool resetting;
     public Animator animator;
     public bool firing;
+    Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -124,7 +125,7 @@ public class LaunchProiectile : MonoBehaviour
             targetPoint = ray.GetPoint(75);
         }
 
-        Vector3 direction = targetPoint - shootPoint.position;
+        direction = targetPoint - shootPoint.position;
         player.AddForce(direction.normalized * -1 * (recoil + chargeForce));
 
 
