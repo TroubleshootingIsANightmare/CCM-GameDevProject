@@ -17,5 +17,9 @@ public class EndParticle : MonoBehaviour
     {
         Destroy(particle);
     }
-
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

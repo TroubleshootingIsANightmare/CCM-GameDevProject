@@ -11,15 +11,24 @@ public class UIManager : MonoBehaviour
 {
     public Rigidbody rb;
     public KeyCode res = KeyCode.RightShift;
-    public KeyCode menu = KeyCode.M;
+    public KeyCode menu = KeyCode.UpArrow;
     public TMP_Text speed;
-    public TMP_Text controlText;
+    public bool spd;
+    public GameObject player;
+    public Transform respawn;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        ShowSpeed();
-        
+        if(spd)
+        {
+            ShowSpeed();
+        }  
         if(Input.GetKeyUp(res))
         {
             Restart();
@@ -41,7 +50,13 @@ public class UIManager : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+
+
     }
 
+    void playerWin()
+    {
+
+    }
 
 }

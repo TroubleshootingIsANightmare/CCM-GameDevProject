@@ -13,7 +13,9 @@ public class WinLevel : MonoBehaviour
 
     public RespawnPlayer res;
     public bool rPaused;
+    public UIManager manager;
     public TMP_Text winText;
+    public GameObject winObject;
     public bool paused = false;
 
     void OnTriggerEnter(Collider other)
@@ -42,6 +44,8 @@ public class WinLevel : MonoBehaviour
     void FixedUpdate()
     {
         winTime += Time.deltaTime;
+
+
     }
     public void resetScene()
     {
