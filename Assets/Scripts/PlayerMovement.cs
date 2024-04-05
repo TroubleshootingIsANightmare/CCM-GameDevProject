@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player")]
     public Rigidbody rb;
     public Transform orientation;
+    public Camera pcamera;
+    public float fov;
     public float playerHeight;
     public Transform player;
 
@@ -21,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public float counterThreshold;
     public bool grounded;
 
+    [Header("Air")]
+    public float airSpeedMultiplier;
+    public float maxAirSpeed;
 
     [Header("Movement")]
     public bool readyToJump, readyToSlide, jumping, sliding;
@@ -29,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 30f;
     public float multiplier = 1f, vMult = 1f;
     public float speed;
-    public float jumpCooldown;
+    public float jumpCooldown, slideCooldown;
     public float horizontalInput, verticalInput;
     Vector3 playerScale = new Vector3(1f,1f,1f);
     Vector3 slideScale = new Vector3(1f, 0.5f, 1f);
