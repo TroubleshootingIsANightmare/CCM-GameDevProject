@@ -122,12 +122,13 @@ public class PlayerMovement : MonoBehaviour
             Cursor.visible = false;
         }
 
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
-        {
-            readyToJump = false;
-            Jump();
-            Invoke("ResetJump", jumpCooldown);
-        }
+    // Jumping
+    if (Input.GetKey(jumpKey) && readyToJump && grounded)
+    {
+        readyToJump = false;
+        Jump();
+        Invoke("ResetJump", jumpCooldown);
+    }
 
         if (Input.GetKeyDown(slideKey) && !sliding && horizontalInput != 0 && readyToSlide|| Input.GetKeyDown(slideKey) && readyToSlide && !sliding && verticalInput != 0)
         {
