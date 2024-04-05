@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jumpCooldown, slideCooldown;
     public float horizontalInput, verticalInput;
-    Vector3 playerScale = new Vector3(1f,1f,1f);
+    Vector3 playerScale = new Vector3(1f, 1f, 1f);
     Vector3 slideScale = new Vector3(1f, 0.5f, 1f);
 
     Vector3 moveDirection;
@@ -111,12 +111,12 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
-            Cursor.lockState= CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        if(Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.None)
+        if (Input.GetKeyDown(KeyCode.Escape) && Cursor.lockState == CursorLockMode.None)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -129,21 +129,31 @@ public class PlayerMovement : MonoBehaviour
             Invoke("ResetJump", jumpCooldown);
         }
 
-        if (Input.GetKeyDown(slideKey) && !sliding && horizontalInput != 0 && readyToSlide|| Input.GetKeyDown(slideKey) && readyToSlide && !sliding && verticalInput != 0)
+        if (Input.GetKeyDown(slideKey) && !sliding && readyToSlide )
         {
-
+            if(horizontalInput != 0 || verticalInput != 0) {
             sliding = true;
             inputDirection = orientation.forward * verticalInput + horizontalInput * orientation.right;
+            }
         }
 
         if (!Input.GetKey(slideKey)) sliding = false;
 
-        if (sliding) Slide(); player.localScale = slideScale; transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-        if(!sliding) player.localScale = playerScale; playerHeight = 1.4f; transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-        if(sliding && rb.velocity.magnitude < 0.1f)
+        if (sliding)
         {
-            sliding = false;
+            Slide();
+            player.localScale = slideScale;
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+            if (rb.velocity.magnitude < 0.1f) sliding = false;
         }
+        else
+        {
+            player.localScale = playerScale;
+            playerHeight = 1.4f;
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        }
+
+
 
 
 
@@ -176,33 +186,32 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput < 0 && xMag < -maxSpeed) horizontalInput = 0;
         if (verticalInput > 0 && yMag > maxSpeed) verticalInput = 0;
         if (verticalInput < 0 && yMag < -maxSpeed) verticalInput = 0;
-        
 
-        if (grounded && !sliding)
+
+        if (grounded)
         {
-            jumping = false;
-            multiplier = 1f;
-            vMult = 1f;
-        }
-        if(sliding)
-        {
-            playerHeight = 0.7f;
-            if (grounded)
+            if (sliding)
             {
+                playerHeight = 0.7f;
                 vMult = 0f;
                 multiplier = 0f;
+                if (readyToJump) rb.AddForce(Vector3.down * Time.deltaTime * 3000);
+            }
+            else
+            {
+                jumping = false;
+                multiplier = 1f;
+                vMult = 1f;
             }
         }
-        if(sliding && grounded && readyToJump)
-        {
-            rb.AddForce(Vector3.down * Time.deltaTime * 3000);
-        }
-        if (!grounded)
+        else
         {
             inputDirection = orientation.forward;
             multiplier = 0.5f;
             vMult = 0.5f;
         }
+
+
 
 
 
